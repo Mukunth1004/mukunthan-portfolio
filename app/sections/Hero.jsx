@@ -122,23 +122,6 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          variants={itemVariants}
-          className="grid grid-cols-3 md:grid-cols-6 gap-4 mb-12 max-w-2xl mx-auto"
-        >
-          {[
-            { label: 'Years Exp', value: '1+' },
-            { label: 'Projects', value: '10+' },
-            { label: 'Technologies', value: '25+' },
-          ].map((stat, i) => (
-            <div key={i} className="glass-effect p-3 rounded-lg">
-              <div className="gradient-text font-black text-2xl">{stat.value}</div>
-              <div className="text-xs text-gray-500 font-medium">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
-
         {/* Scroll Indicator */}
         <motion.div
           variants={itemVariants}
