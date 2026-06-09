@@ -8,14 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: '#0a0e27',
-        'dark-secondary': '#1a1f3a',
-        'dark-tertiary': '#262d4a',
-        accent: '#00d9ff',
-        'accent-dark': '#0099cc',
-        'accent-light': '#33e9ff',
-        gold: '#ffd700',
-        'success': '#00e676',
+        dark: '#0f0a1a',
+        'dark-secondary': '#1a1220',
+        'dark-tertiary': '#2d1f3f',
+        accent: '#c084fc',
+        'accent-dark': '#a855f7',
+        'accent-light': '#e9d5ff',
+        gold: '#fbbf24',
+        'gold-dark': '#d97706',
+        'success': '#10b981',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -48,12 +49,12 @@ module.exports = {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          '0%, 100%': { textShadow: '0 0 20px rgba(0, 217, 255, 0.5), 0 0 40px rgba(0, 217, 255, 0.3)' },
-          '50%': { textShadow: '0 0 40px rgba(0, 217, 255, 0.8), 0 0 80px rgba(0, 217, 255, 0.5)' },
+          '0%, 100%': { textShadow: '0 0 20px rgba(192, 132, 252, 0.5), 0 0 40px rgba(192, 132, 252, 0.3)' },
+          '50%': { textShadow: '0 0 40px rgba(192, 132, 252, 0.8), 0 0 80px rgba(192, 132, 252, 0.5)' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(0, 217, 255, 0.4)' },
-          '50%': { boxShadow: '0 0 40px rgba(0, 217, 255, 0.8)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(192, 132, 252, 0.4)' },
+          '50%': { boxShadow: '0 0 40px rgba(192, 132, 252, 0.8)' },
         },
         shimmer: {
           '0%': { backgroundPosition: '-1000px 0' },
