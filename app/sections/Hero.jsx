@@ -25,39 +25,8 @@ export default function Hero() {
     },
   };
 
-  const floatingVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 1.2, ease: 'easeOut' },
-    },
-  };
-
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-10">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.div
-          variants={floatingVariants}
-          initial="hidden"
-          animate="visible"
-          className="absolute top-10 left-20 w-96 h-96 bg-accent opacity-10 rounded-full blur-3xl animate-blob"
-        />
-        <motion.div
-          variants={floatingVariants}
-          initial="hidden"
-          animate="visible"
-          className="absolute bottom-10 right-20 w-96 h-96 bg-accent opacity-5 rounded-full blur-3xl animate-blob animation-delay-2000"
-        />
-        <motion.div
-          variants={floatingVariants}
-          initial="hidden"
-          animate="visible"
-          className="absolute top-1/2 left-1/3 w-72 h-72 bg-blue-500 opacity-5 rounded-full blur-3xl animate-blob animation-delay-4000"
-        />
-      </div>
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -84,7 +53,7 @@ export default function Hero() {
         {/* Subheading */}
         <motion.h2
           variants={itemVariants}
-          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-gray-300"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-gray-400"
         >
           DevOps • Cloud • Architecture
         </motion.h2>
@@ -92,9 +61,9 @@ export default function Hero() {
         {/* Description */}
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed font-light"
+          className="text-lg md:text-xl text-gray-500 mb-10 max-w-3xl mx-auto leading-relaxed font-light"
         >
-          Building scalable cloud solutions with <span className="gradient-text font-semibold">Kubernetes</span>, <span className="gradient-text font-semibold">Docker</span>, and modern technologies.
+          Building scalable cloud solutions with <span className="text-white font-semibold">Kubernetes</span>, <span className="text-white font-semibold">Docker</span>, and modern technologies.
           Architecting resilient systems that power enterprise applications and drive business growth.
         </motion.p>
 
@@ -131,7 +100,7 @@ export default function Hero() {
             className="p-3 glass-effect rounded-full hover:glow-box transition-all"
             title="Email"
           >
-            <FiMail size={24} className="text-accent" />
+            <FiMail size={24} className="text-white" />
           </a>
           <a
             href="https://linkedin.com/in/s-mukunth1004"
@@ -140,7 +109,7 @@ export default function Hero() {
             className="p-3 glass-effect rounded-full hover:glow-box transition-all"
             title="LinkedIn"
           >
-            <FiLinkedin size={24} className="text-accent" />
+            <FiLinkedin size={24} className="text-white" />
           </a>
           <a
             href="https://github.com/Mukunth1004"
@@ -149,7 +118,7 @@ export default function Hero() {
             className="p-3 glass-effect rounded-full hover:glow-box transition-all"
             title="GitHub"
           >
-            <FiGithub size={24} className="text-accent" />
+            <FiGithub size={24} className="text-white" />
           </a>
         </motion.div>
 
@@ -165,7 +134,7 @@ export default function Hero() {
           ].map((stat, i) => (
             <div key={i} className="glass-effect p-3 rounded-lg">
               <div className="gradient-text font-black text-2xl">{stat.value}</div>
-              <div className="text-xs text-gray-400 font-medium">{stat.label}</div>
+              <div className="text-xs text-gray-500 font-medium">{stat.label}</div>
             </div>
           ))}
         </motion.div>
@@ -178,8 +147,8 @@ export default function Hero() {
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           <div className="flex flex-col items-center gap-2">
-            <p className="text-sm text-gray-400 font-medium">Scroll to explore</p>
-            <FiArrowDown className="text-accent text-2xl animate-bounce" />
+            <p className="text-sm text-gray-600 font-medium">Scroll to explore</p>
+            <FiArrowDown className="text-white text-2xl animate-bounce" />
           </div>
         </motion.div>
       </motion.div>
