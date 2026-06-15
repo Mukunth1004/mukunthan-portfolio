@@ -40,6 +40,22 @@ const featured = [
 
 const other = [
   {
+    name: 'CloudDeployX',
+    description:
+      'Production-grade FastAPI REST API containerized with Docker multi-stage builds and deployed on GCP Cloud Run. Zero-downtime GitHub Actions CI/CD pipeline using Workload Identity Federation (no static keys). Auto-scales 0→10 instances with Cloud Logging + Cloud Monitoring.',
+    stack: ['FastAPI', 'Python 3.12', 'Docker', 'GCP Cloud Run', 'GitHub Actions', 'Artifact Registry', 'Cloud Logging'],
+    status: 'Active',
+    link: 'https://github.com/Mukunth1004/CloudDeployX',
+  },
+  {
+    name: 'Faculty Information System',
+    description:
+      'Web-based ASP.NET system enabling faculty members to manage profiles, academic descriptions, and achievements. Role-based access control for faculty and administrative staff. Built with C# and .NET.',
+    stack: ['C#', '.NET', 'ASP.NET', 'SQL Server', 'MVC'],
+    status: 'Complete',
+    link: 'https://github.com/Mukunth1004/Faculty-Information-System',
+  },
+  {
     name: 'Phoenix — Shopify Checkout Builder',
     description:
       'Full CSR → SSR migration using Remix. PageSpeed: Performance 45 → 86+, Accessibility 86 → 100, SEO 98 → 100. All Core Web Vitals improved.',

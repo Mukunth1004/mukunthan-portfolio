@@ -1,155 +1,167 @@
-# 🌟 Mukunthan's Portfolio Website
+# Mukunthan Karuppaiah S — Portfolio
 
-> **🚀 LIVE & DEPLOYED**  
-> **Website URL:** https://mukunthan-portfolio-z7if.vercel.app/
+**Live site:** https://mukunthan-portfolio-z7if.vercel.app
 
-A stunning, modern portfolio website showcasing Full Stack Engineer expertise in DevOps & Cloud Infrastructure.
-
-## ✨ Features
-
-- 🎨 ** Design** - Minimalist black & white aesthetic
-- ⚡ **High Performance** - Optimized for speed with Next.js
-- 📱 **Responsive** - Mobile-first responsive design
-- 🎬 **Smooth Animations** - Elegant transitions with Framer Motion
-- 🌙 **Professional** - Clean, modern interface
-- 📊 **Showcase** - Experience, skills, and projects highlighted
-
-## 🛠 Tech Stack
-
-- **Framework**: Next.js 14
-- **Styling**: TailwindCSS 3
-- **Animations**: Framer Motion 10
-- **Icons**: React Icons
-- **Deployment**: Vercel
-
-## 📍 Live Website
-
-**Visit:** https://mukunthan-portfolio-z7if.vercel.app/
-
-The portfolio is fully deployed and live on Vercel. No setup required - just visit the link above!
-
-## 🚀 Getting Started (Local Development)
-
-If you want to clone and run locally:
-
-```bash
-# Clone the repository
-git clone https://github.com/Mukunth1004/mukunthan-portfolio.git
-cd mukunthan-portfolio
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Open http://localhost:3000 in your browser
-```
-
-## 📦 Build & Deploy
-
-```bash
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-## 📂 Project Structure
-
-```
-mukunthan-portfolio/
-├── app/
-│   ├── components/
-│   │   └── Header.jsx          (Navigation header)
-│   ├── sections/
-│   │   ├── Hero.jsx             (Landing section)
-│   │   ├── About.jsx            (About me)
-│   │   ├── Experience.jsx       (Work history)
-│   │   ├── Skills.jsx           (Technical skills)
-│   │   ├── Projects.jsx         (Featured projects)
-│   │   └── Contact.jsx          (Contact info)
-│   ├── styles/
-│   │   └── globals.css          (Global styles)
-│   ├── layout.jsx               (App layout)
-│   └── page.jsx                 (Main page)
-├── public/                      (Static assets)
-├── next.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── package.json
-├── vercel.json                  (Vercel config)
-└── README.md                    (This file)
-```
-
-## 🎨 Design Features
-
-### Color Scheme
-- **Background**: Pure Black
-- **Text**: White
-- **Accents**: Light Gray
-- **Minimal & Elegant**: No unnecessary colors
-
-### Sections
-
-1. **Hero** - Eye-catching introduction with CTA buttons
-2. **About** - Professional bio with key statistics
-3. **Experience** - Timeline of professional roles
-4. **Skills** - Technical expertise with proficiency levels
-5. **Projects** - Featured projects with metrics
-6. **Contact** - Multiple ways to get in touch
-
-## 📈 Performance
-
-Expected Lighthouse Scores:
-- **Performance**: 95+
-- **Accessibility**: 95+
-- **Best Practices**: 95+
-- **SEO**: 100
-- **Page Load**: <1.5 seconds
-
-## 🔄 Deployment
-
-This project is deployed on **Vercel** (free tier).
-
-**Auto-deployment**: Every push to `main` branch automatically deploys to:
-https://mukunthan-portfolio-z7if.vercel.app/
-
-## 📝 Customization
-
-To customize this portfolio for yourself:
-
-1. **Update Content**: Edit files in `app/sections/`
-2. **Change Colors**: Modify `tailwind.config.js`
-3. **Update Resume**: Edit experience, skills, and projects
-4. **Deploy**: Push to GitHub → Vercel auto-deploys
-
-## 🔗 Links
-
-- 🌐 **Live Website**: https://mukunthan-portfolio-z7if.vercel.app/
-- 💻 **GitHub Repo**: https://github.com/Mukunth1004/mukunthan-portfolio
-- 👤 **My GitHub**: https://github.com/Mukunth1004
-- 💼 **LinkedIn**: https://www.linkedin.com/in/s-mukunth1004
-- 📧 **Email**: mukunth.s1004@gmail.com
-
-## 📜 License
-
-MIT - Feel free to use this template for your portfolio
-
-## 🎓 About
-
-This is a professional portfolio website built with modern web technologies. It demonstrates:
-- Full Stack Development (React, Node.js)
-- DevOps & Cloud Infrastructure (Kubernetes, Docker)
-- Performance Optimization
-- Responsive Design
-- Web Development Best Practices
+Full Stack Engineer & DevOps · Spizen Technologies, Bangalore  
+Built with Next.js 14, TailwindCSS, and Framer Motion. Deployed on Vercel.
 
 ---
 
-**Portfolio Value**: $5,000-10,000  
-**Your Cost**: $0  
-**Deployment**: ✅ Live & Ready!
+## Tech Stack
 
-**Visit:** https://mukunthan-portfolio-z7if.vercel.app/ 🚀
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Styling | TailwindCSS 3 + custom design system |
+| Animations | Framer Motion 10 |
+| Icons | React Icons |
+| Scroll | react-scroll |
+| Deployment | Vercel (auto-deploy on push to `main`) |
+
+---
+
+## Project Structure
+
+```
+app/
+├── components/
+│   └── Header.jsx          scroll-aware nav with mobile drawer
+├── sections/
+│   ├── Hero.jsx            dot-grid landing with animated entry
+│   ├── About.jsx           bio + 4-stat cards
+│   ├── Experience.jsx      timeline of 3 professional roles
+│   ├── Skills.jsx          tag-cloud across 6 skill categories
+│   ├── Projects.jsx        featured cards + other projects grid
+│   └── Contact.jsx         contact links + footer
+├── styles/
+│   └── globals.css         design tokens, component classes
+├── layout.jsx              metadata, root layout
+└── page.jsx                section composition
+```
+
+---
+
+## Local Development
+
+```bash
+git clone https://github.com/Mukunth1004/mukunthan-portfolio.git
+cd mukunthan-portfolio
+npm install
+npm run dev
+# → http://localhost:3000
+```
+
+```bash
+npm run build   # production build
+npm start       # serve production build
+npm run lint    # ESLint check
+```
+
+---
+
+## Projects Showcased
+
+### Featured
+
+#### MyBuildGuide — Construction Project Management Platform
+> Production · AppStore & PlayStore · Spizen Technologies
+
+- Led Kubernetes cluster migration (7 services + 6 PostgreSQL DBs) from Orion to Hetzner K3s — 99.8% uptime
+- Zero-downtime DB migration: taskmanager 207MB, erpdatabase 51K+ rows, plus accounting, guidebuilder, filesystem, buildpros
+- Reduced API response time 50% for 100K+ record reports via indexing and pagination
+- Resolved 20+ production bugs across 7 microservices
+- Apache Superset KPI dashboards (Helm); Pro Partner Program serving 10K+ users
+
+**Stack:** Kubernetes (K3s) · Docker · Hetzner · GitLab CI/CD · PostgreSQL · Helm · Traefik · React · Node.js
+
+---
+
+#### AI Document Intelligence Platform
+> Active · Personal Project · June 2026–Present
+
+- End-to-end RAG platform: FastAPI + Next.js + PostgreSQL + pgvector
+- Semantic vector search with Hugging Face embeddings — supports PDF, DOCX, TXT, Markdown
+- <500ms vector search response; Redis caching cut API calls by 60%
+- Token-aware document chunking, JWT auth with user quotas, chat persistence
+- Deployed on Vercel
+
+**Stack:** FastAPI · Next.js · PostgreSQL · pgvector · Hugging Face · Redis · Google Gemini API · Vercel  
+**Repo:** https://github.com/Mukunth1004/ai-document-intelligence
+
+---
+
+### Other Projects
+
+#### CloudDeployX — GCP Cloud Run Deployment
+> Active
+
+Production-grade FastAPI REST API containerized with Docker multi-stage builds and deployed serverlessly on GCP Cloud Run. GitHub Actions CI/CD pipeline with Workload Identity Federation (zero static credentials). Includes structured JSON logging to Cloud Logging and uptime monitoring via Cloud Monitoring. CRUD API with liveness/readiness probes, 9-test pytest suite, and non-root container security.
+
+**Stack:** FastAPI · Python 3.12 · Docker · GCP Cloud Run · GitHub Actions · Artifact Registry · Cloud Logging · Cloud Monitoring  
+**Repo:** https://github.com/Mukunth1004/CloudDeployX
+
+---
+
+#### Faculty Information System — .NET Web Application
+> Complete
+
+Web-based ASP.NET application enabling faculty members to view and update their profiles, academic descriptions, and achievements. Role-based access control for faculty and administrative staff. Built with C# and the .NET MVC pattern.
+
+**Stack:** C# · .NET · ASP.NET MVC · SQL Server  
+**Repo:** https://github.com/Mukunth1004/Faculty-Information-System
+
+---
+
+#### Phoenix — Shopify Checkout Builder
+> Live · Soft Suave Technologies
+
+Full CSR → SSR migration of a Shopify checkout flow using Remix. PageSpeed improvements: Performance 45→86+, Accessibility 86→100, SEO 98→100. All Core Web Vitals improved. Reusable no-code components via Puck Editor.
+
+**Stack:** Remix SSR · React · TypeScript · Shopify · Puck Editor
+
+---
+
+#### Cloud Cost Prediction — AWS Billing Forecasting
+> Complete · KONE Elevator India
+
+XGBoost regression model with engineered time-series features (hour, day_of_week, month) and MinMax scaling on AWS billing datasets. FastAPI backend exposing REST APIs for real-time cost forecasting across EC2, S3, Lambda, DynamoDB.
+
+**Stack:** Python · XGBoost · FastAPI · Scikit-learn · AWS  
+**Repo:** https://github.com/Mukunth1004/Cost-Prediction-AWS
+
+---
+
+#### No Limit Nodes
+> Live
+
+Production web platform with live traffic.
+
+**Link:** https://nolimitnodes.com  
+**Stack:** React · Node.js · Cloud Infrastructure
+
+---
+
+## Design System
+
+The site uses a minimal black/white palette — no accent colors — with a custom component layer in `globals.css`:
+
+| Class | Usage |
+|---|---|
+| `.btn-primary` | White fill pill button |
+| `.btn-secondary` | Ghost border pill button |
+| `.card-premium` | Dark glass card with border |
+| `.badge` | Small tech tag |
+| `.badge-accent` | Rounded status pill |
+| `.section-eyebrow` | ALL CAPS spaced label above heading |
+| `.section-heading` | Fluid-type section title |
+
+---
+
+## Deployment
+
+Vercel auto-deploys every push to `main`. No config required.
+
+**Live:** https://mukunthan-portfolio-z7if.vercel.app  
+**Repo:** https://github.com/Mukunth1004/mukunthan-portfolio  
+**Email:** mukunth.s1004@gmail.com  
+**LinkedIn:** https://www.linkedin.com/in/s-mukunth1004
