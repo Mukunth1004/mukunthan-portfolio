@@ -1,81 +1,112 @@
-'use client';
+'use client'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-scroll'
+import { FiMenu, FiX } from 'react-icons/fi'
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { Link } from 'react-scroll';
+const navItems = [
+  { label: 'About', to: 'about' },
+  { label: 'Experience', to: 'experience' },
+  { label: 'Skills', to: 'skills' },
+  { label: 'Projects', to: 'projects' },
+  { label: 'Contact', to: 'contact' },
+]
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
-  const navItems = [
-    { label: 'Home', id: 'hero' },
-    { label: 'About', id: 'about' },
-    { label: 'Experience', id: 'experience' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Contact', id: 'contact' },
-  ];
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', handler, { passive: true })
+    return () => window.removeEventListener('scroll', handler)
+  }, [])
 
   return (
-    <header className="fixed w-full top-0 z-50 glass-effect">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-2xl font-bold gradient-text"
-        >
-          Mukunthan
-        </motion.div>
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-black/85 backdrop-blur-2xl border-b border-white/[0.05]'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Wordmark */}
+        <Link to="home" smooth duration={600} className="cursor-pointer select-none">
+          <span className="text-sm font-bold tracking-[-0.02em] text-white">
+            MK<span className="text-white/20 font-light">.</span>
+          </span>
+        </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8">
-          {navItems.map((item) => (
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-7">
+          {navItems.map(({ label, to }) => (
             <Link
-              key={item.id}
-              to={item.id}
-              spy
+              key={to}
+              to={to}
               smooth
-              offset={-70}
-              className="cursor-pointer hover:text-accent transition-colors text-sm"
+              duration={700}
+              offset={-64}
+              spy
+              activeClass="!text-white"
+              className="text-sm text-white/35 hover:text-white/75 transition-colors duration-200 cursor-pointer tracking-[0.01em]"
             >
-              {item.label}
+              {label}
             </Link>
           ))}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-16 left-0 right-0 bg-dark-secondary flex flex-col gap-4 p-4 md:hidden"
+          <a
+            href="mailto:mukunth.s1004@gmail.com"
+            className="text-sm px-4 py-1.5 rounded-full border border-white/15 text-white/55 hover:text-white hover:border-white/35 transition-all duration-200 ml-2"
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.id}
-                to={item.id}
-                spy
-                smooth
-                offset={-70}
-                className="cursor-pointer hover:text-accent transition-colors"
-                onClick={() => setIsOpen(false)}
+            Hire me
+          </a>
+        </nav>
+
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden text-white/40 hover:text-white transition-colors"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle navigation"
+        >
+          {open ? <FiX size={19} /> : <FiMenu size={19} />}
+        </button>
+      </div>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18 }}
+            className="md:hidden bg-black/92 backdrop-blur-2xl border-b border-white/[0.05]"
+          >
+            <nav className="px-6 py-3 flex flex-col">
+              {navItems.map(({ label, to }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  smooth
+                  duration={700}
+                  offset={-64}
+                  onClick={() => setOpen(false)}
+                  className="py-3 text-sm text-white/45 hover:text-white transition-colors cursor-pointer border-b border-white/[0.04] last:border-0"
+                >
+                  {label}
+                </Link>
+              ))}
+              <a
+                href="mailto:mukunth.s1004@gmail.com"
+                className="mt-3 mb-2 text-sm text-center py-2.5 rounded-full border border-white/15 text-white/55"
+                onClick={() => setOpen(false)}
               >
-                {item.label}
-              </Link>
-            ))}
+                Hire me
+              </a>
+            </nav>
           </motion.div>
         )}
-      </nav>
+      </AnimatePresence>
     </header>
-  );
+  )
 }

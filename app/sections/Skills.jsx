@@ -1,128 +1,77 @@
-'use client';
+'use client'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-import { motion } from 'framer-motion';
+const groups = [
+  {
+    category: 'Languages',
+    skills: ['Python', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'SQL'],
+  },
+  {
+    category: 'Frontend',
+    skills: ['React.js', 'Remix (SSR)', 'Next.js', 'TailwindCSS', 'ES6+', 'Responsive Design'],
+  },
+  {
+    category: 'Backend & Databases',
+    skills: ['Node.js', 'Express.js', 'FastAPI', 'PostgreSQL', 'MySQL', 'REST APIs', 'JWT Auth', 'DBeaver'],
+  },
+  {
+    category: 'DevOps & Infra',
+    skills: ['Kubernetes (K3s)', 'Docker', 'Traefik', 'cert-manager', 'Longhorn', 'Rancher', 'Proxmox', 'Tailscale', 'Linux Admin'],
+  },
+  {
+    category: 'CI/CD & Cloud',
+    skills: ['GitLab CI/CD', 'Helm', 'Hetzner K3s', 'AWS (EC2, Lambda, S3)', 'StatefulSets', 'Apache Superset'],
+  },
+  {
+    category: 'Tools & Version Control',
+    skills: ['Git', 'GitHub', 'GitLab', 'Postman', 'pgvector', 'Redis', 'Hugging Face'],
+  },
+]
 
 export default function Skills() {
-  const skillCategories = [
-    {
-      category: 'Frontend Technologies',
-      icon: '⚛️',
-      skills: [
-        { name: 'React.js', level: 95 },
-        { name: 'Remix (SSR)', level: 90 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'TailwindCSS', level: 95 },
-      ],
-    },
-    {
-      category: 'Backend & APIs',
-      icon: '🖥️',
-      skills: [
-        { name: 'Node.js', level: 90 },
-        { name: 'Express.js', level: 88 },
-        { name: 'FastAPI', level: 85 },
-        { name: 'Python', level: 88 },
-      ],
-    },
-    {
-      category: 'Databases',
-      icon: '💾',
-      skills: [
-        { name: 'PostgreSQL', level: 92 },
-        { name: 'MySQL', level: 85 },
-        { name: 'Query Optimization', level: 90 },
-        { name: 'Database Migration', level: 88 },
-      ],
-    },
-    {
-      category: 'DevOps & Cloud',
-      icon: '☁️',
-      skills: [
-        { name: 'Kubernetes (K3s)', level: 92 },
-        { name: 'Docker', level: 90 },
-        { name: 'Hetzner Cloud', level: 88 },
-        { name: 'AWS', level: 85 },
-      ],
-    },
-    {
-      category: 'Infrastructure',
-      icon: '🔧',
-      skills: [
-        { name: 'Traefik', level: 85 },
-        { name: 'GitLab CI/CD', level: 88 },
-        { name: 'Helm', level: 86 },
-        { name: 'Prometheus', level: 82 },
-      ],
-    },
-    {
-      category: 'Tools & Version Control',
-      icon: '🛠️',
-      skills: [
-        { name: 'Git', level: 95 },
-        { name: 'GitHub', level: 90 },
-        { name: 'GitLab', level: 88 },
-        { name: 'Postman', level: 90 },
-      ],
-    },
-  ];
-
-  const SkillBar = ({ name, level }) => (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="space-y-2"
-    >
-      <div className="flex justify-between items-center">
-        <span className="text-sm font-medium text-gray-300">{name}</span>
-        <span className="text-xs text-accent font-semibold">{level}%</span>
-      </div>
-      <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true }}
-          className="h-full bg-gradient-to-r from-accent to-accent-light rounded-full"
-        />
-      </div>
-    </motion.div>
-  );
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="skills" className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
+    <section id="skills" className="py-32 px-6">
+      <div className="max-w-6xl mx-auto" ref={ref}>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          className="section-eyebrow"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
-            <span className="gradient-text">Technical</span> Expertise
-          </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-accent to-transparent rounded-full" />
-        </motion.div>
+          Stack
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="section-heading"
+        >
+          Technical Skills
+        </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
+          {groups.map((group, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="card-premium p-8 rounded-xl"
+              key={group.category}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15 + i * 0.07 }}
+              className="card-premium p-6"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-4xl">{category.icon}</span>
-                <h3 className="text-xl font-black text-white">{category.category}</h3>
-              </div>
-              <div className="space-y-4">
-                {category.skills.map((skill, i) => (
-                  <SkillBar key={i} name={skill.name} level={skill.level} />
+              <h3 className="text-xs font-semibold tracking-[0.2em] uppercase text-white/25 mb-5">
+                {group.category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 text-xs text-white/60 bg-white/[0.04] rounded-full border border-white/[0.07] hover:border-white/20 hover:text-white/90 transition-all duration-200 cursor-default"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </motion.div>
@@ -130,5 +79,5 @@ export default function Skills() {
         </div>
       </div>
     </section>
-  );
+  )
 }

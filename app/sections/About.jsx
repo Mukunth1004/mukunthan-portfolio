@@ -1,109 +1,126 @@
-'use client';
+'use client'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-import { motion } from 'framer-motion';
-import { FiCode, FiServer, FiZap, FiTarget } from 'react-icons/fi';
+const stats = [
+  { value: '99.8%', label: 'Uptime Achieved' },
+  { value: '50%', label: 'API Speed Gain' },
+  { value: '20+', label: 'Bugs Resolved' },
+  { value: '10K+', label: 'Users Served' },
+]
+
+const highlights = [
+  'Led K8s migration of 7 services + 6 PostgreSQL DBs from Orion to Hetzner K3s',
+  'Zero-downtime DB migrations with 51K+ rows — taskmanager 207MB, erpdatabase and more',
+  'PageSpeed: Performance 45 → 86+, Accessibility 86 → 100, SEO 98 → 100',
+  'RAG platform with <500ms vector search, Redis caching reducing API calls by 60%',
+]
 
 export default function About() {
-  const stats = [
-    { label: 'Years Experience', value: '1+', icon: FiCode },
-    { label: 'Projects Deployed', value: '10+', icon: FiServer },
-    { label: 'Technologies', value: '25+', icon: FiZap },
-    { label: 'QA Pass Rate', value: '100%', icon: FiTarget },
-  ];
-
-  const highlights = [
-    'Full Stack Development (React, Node.js, Python)',
-    'Cloud Infrastructure (Kubernetes, Docker, AWS)',
-    'Database Optimization (65% API improvement)',
-    'CI/CD Pipelines (GitLab, automated deployments)',
-  ];
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="about" className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
+    <section id="about" className="py-32 px-6">
+      <div className="max-w-6xl mx-auto" ref={ref}>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6 }}
+          className="section-eyebrow"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
-            <span className="gradient-text">About</span> Me
-          </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-accent to-transparent rounded-full" />
-        </motion.div>
+          Background
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="section-heading"
+        >
+          About Me
+        </motion.h2>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+        <div className="grid lg:grid-cols-[1fr_420px] gap-14 items-start mt-16">
+          {/* Left: narrative */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-6"
+            initial={{ opacity: 0, x: -24 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.18 }}
+            className="space-y-5"
           >
-            <p className="text-lg text-gray-300 leading-relaxed font-light">
-              I'm a passionate <span className="gradient-text font-semibold">Full Stack Engineer</span> with deep expertise in DevOps and Cloud Infrastructure. Currently at <span className="font-semibold text-accent">Spizen Technologies</span>, I specialize in architecting and deploying scalable cloud solutions.
+            <p className="text-white/55 leading-relaxed text-[0.95rem]">
+              I'm a Full Stack Engineer at{' '}
+              <span className="text-white font-medium">Spizen Technologies</span>, Bangalore, building
+              and shipping production-grade systems end-to-end — React/Remix frontends, Node.js/FastAPI
+              backends, and Kubernetes-orchestrated infrastructure on Hetzner K3s.
+            </p>
+            <p className="text-white/55 leading-relaxed text-[0.95rem]">
+              My work sits at the intersection of product and platform: I architect features for real
+              users while owning the infrastructure they run on. I've managed large-scale database
+              migrations, resolved 20+ production bugs across 7 microservices, designed Apache Superset
+              KPI dashboards, and led CI/CD pipelines from GitLab to Helm deployments.
+            </p>
+            <p className="text-white/55 leading-relaxed text-[0.95rem]">
+              B.E. Computer Science from{' '}
+              <span className="text-white font-medium">Anna University</span> (2025). Before Spizen, I
+              drove a full CSR→SSR migration at Soft Suave and built ML-powered cost prediction at
+              KONE Elevator. I ship fast, measure obsessively, and iterate with data.
             </p>
 
-            <p className="text-lg text-gray-300 leading-relaxed font-light">
-              My expertise spans from frontend development with <span className="font-semibold text-accent-light">React</span> and <span className="font-semibold text-accent-light">Remix SSR</span>, to backend services with <span className="font-semibold text-accent-light">Node.js</span> and <span className="font-semibold text-accent-light">FastAPI</span>, complemented by robust DevOps practices.
-            </p>
-
-            <p className="text-lg text-gray-300 leading-relaxed font-light">
-              I've successfully led database migrations handling <span className="font-semibold text-success">150+ GB</span> of data, architected Kubernetes clusters achieving <span className="font-semibold text-success">99.8% uptime</span>, and optimized systems improving performance by <span className="font-semibold text-success">65%</span>.
-            </p>
-
-            {/* Highlights */}
-            <div className="space-y-3 mt-8 pt-8 border-t border-gray-700">
-              {highlights.map((highlight, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="w-2 h-2 bg-accent rounded-full" />
-                  <span className="text-gray-400">{highlight}</span>
-                </motion.div>
+            <ul className="space-y-2.5 pt-3">
+              {highlights.map((h, i) => (
+                <li key={i} className="flex gap-3 text-sm text-white/40 leading-relaxed">
+                  <span className="flex-shrink-0 w-1 h-1 rounded-full bg-white/25 mt-[9px]" />
+                  {h}
+                </li>
               ))}
-            </div>
+            </ul>
           </motion.div>
 
-          {/* Stats Grid */}
+          {/* Right: stat cards */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 gap-6"
+            initial={{ opacity: 0, x: 24 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.28 }}
+            className="grid grid-cols-2 gap-3"
           >
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="card-premium p-6 rounded-xl"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <Icon className="text-accent text-3xl" />
-                  </div>
-                  <div className="text-4xl font-black gradient-text mb-2">{stat.value}</div>
-                  <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
-                </motion.div>
-              );
-            })}
+            {stats.map(({ value, label }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.38 + i * 0.09 }}
+                className="card-premium p-7 text-center"
+              >
+                <div className="text-[2.4rem] font-bold tracking-tight leading-none mb-2">
+                  {value}
+                </div>
+                <div className="text-xs text-white/35 tracking-wide uppercase font-medium">
+                  {label}
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Location card */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.74 }}
+              className="card-premium p-6 col-span-2 flex items-center gap-5"
+            >
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0 text-lg">
+                📍
+              </div>
+              <div>
+                <div className="text-sm font-medium text-white/80">Chennai / Bangalore, India</div>
+                <div className="text-xs text-white/30 mt-0.5">
+                  B.E. CSE · Anna University · 2025
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
-  );
+  )
 }

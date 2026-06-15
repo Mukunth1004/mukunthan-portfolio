@@ -1,150 +1,155 @@
-'use client';
+'use client'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import { FiCalendar, FiMapPin } from 'react-icons/fi'
 
-import { motion } from 'framer-motion';
-import { FiBriefcase, FiMapPin, FiCalendar, FiCheckCircle } from 'react-icons/fi';
+const experiences = [
+  {
+    title: 'Full Stack Engineer | DevOps & Cloud',
+    company: 'Spizen Technologies Private Limited',
+    period: 'Feb 2026 – Present',
+    location: 'Bangalore, India',
+    project: 'MyBuildGuide — Construction Project Management Platform',
+    current: true,
+    achievements: [
+      'Led infrastructure transformation: Kubernetes cluster migration (7 services + 6 PostgreSQL databases) from Orion to Hetzner K3s with GitLab CI/CD achieving 99.8% uptime; led 3-person team on deployment and validation.',
+      'Executed zero-downtime migration across 6 DB instances (taskmanager 207MB, erpdatabase 51K+ rows, accounting, guidebuilder, filesystem, buildpros); reduced API response time 50% for 100K+ record reports through indexing and pagination.',
+      'Resolved 20+ production bugs across 7 microservices; architected Apache Superset KPI dashboards with production Helm configuration.',
+      'Implemented Pro Partner Program (Helm charts + Docker) with auto-login and partner hub integration serving 10K+ users.',
+    ],
+    stack: ['Kubernetes (K3s)', 'Docker', 'Hetzner', 'GitLab CI/CD', 'PostgreSQL', 'Helm', 'Traefik', 'React', 'Node.js'],
+  },
+  {
+    title: 'Software Development Engineer',
+    company: 'Soft Suave Technologies Pvt Ltd',
+    period: 'Aug 2025 – Jan 2026',
+    location: 'Chennai, India',
+    project: 'Phoenix — E-Commerce Payment Checkout Builder for Shopify',
+    current: false,
+    achievements: [
+      'Led complete migration of Shopify checkout flow from Client-Side Rendering to Server-Side Rendering using Remix; achieved significant PageSpeed improvements: Performance (45 → 86+), Accessibility (86 → 100), SEO (98 → 100).',
+      'Improved Core Web Vitals across all metrics — LCP, FID, CLS.',
+      'Engineered reusable, client-specific components using Puck Editor enabling merchants to customize checkout experiences and deliver tailored payment pages without code changes.',
+    ],
+    stack: ['Remix SSR', 'React', 'TypeScript', 'Shopify', 'Puck Editor', 'Node.js'],
+  },
+  {
+    title: 'Software Engineering Intern',
+    company: 'Kone Elevator India Pvt Ltd',
+    period: 'Mar 2025 – May 2025',
+    location: 'Chennai, India',
+    project: 'Cloud Cost Prediction System',
+    current: false,
+    achievements: [
+      'Designed and deployed a production-grade cloud cost prediction system using XGBoost regression with engineered time-series features (hour, day_of_week, month) and MinMax scaling on AWS billing datasets.',
+      'Built a full-stack application using FastAPI and a data preprocessing pipeline, exposing REST APIs for real-time cost forecasting and service-wise cost breakdowns across EC2, S3, Lambda, and DynamoDB.',
+    ],
+    stack: ['Python', 'FastAPI', 'XGBoost', 'Scikit-learn', 'AWS', 'REST APIs'],
+  },
+]
 
 export default function Experience() {
-  const experiences = [
-    {
-      role: 'Full Stack Engineer | DevOps & Cloud',
-      company: 'Spizen Technologies',
-      period: 'Feb 2026 - Present',
-      location: 'Bangalore, India',
-      status: 'Current',
-      highlights: [
-        'Led production database migration (6 PostgreSQL instances, 150+ GB) with zero data loss',
-        'Architected Kubernetes cluster migration to Hetzner K3s achieving 99.8% uptime',
-        'Optimized API response time by 65% through query optimization and strategic indexing',
-        'Designed Apache Superset dashboards for KPI tracking and business intelligence',
-      ],
-      technologies: ['Kubernetes', 'Docker', 'PostgreSQL', 'GitLab CI/CD', 'Hetzner Cloud'],
-    },
-    {
-      role: 'Software Development Engineer',
-      company: 'Soft Suave Technologies',
-      period: 'Aug 2025 - Jan 2026',
-      location: 'Chennai, India',
-      status: 'Completed',
-      highlights: [
-        'Led complete Shopify checkout migration to Server-Side Rendering (SSR) using Remix',
-        'Improved PageSpeed: Performance 45→86+, SEO 98→100, Accessibility 86→100',
-        'Implemented route-based code splitting and package optimization for Core Web Vitals',
-        'Built customizable components using Puck Editor for merchant flexibility',
-      ],
-      technologies: ['Remix', 'React', 'TypeScript', 'Node.js', 'Performance Optimization'],
-    },
-    {
-      role: 'Software Engineering Intern',
-      company: 'KONE Elevator India',
-      period: 'Mar 2025 - May 2025',
-      location: 'Chennai, India',
-      status: 'Completed',
-      highlights: [
-        'Designed hybrid cost prediction model using LSTM with multi-head attention',
-        'Achieved MAE of 2.13 and RMSE of 3.47 on AWS billing data',
-        'Optimized model input through MinMax scaling and feature engineering',
-        'Improved prediction efficiency by 40% over baseline models',
-      ],
-      technologies: ['Python', 'LSTM', 'XGBoost', 'TensorFlow', 'AWS'],
-    },
-  ];
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="experience" className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto w-full">
-        {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
+    <section id="experience" className="py-32 px-6 bg-white/[0.01]">
+      <div className="max-w-4xl mx-auto" ref={ref}>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          className="section-eyebrow"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
-            <span className="gradient-text">Professional</span> Journey
-          </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-accent to-transparent rounded-full" />
-        </motion.div>
+          Career
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="section-heading"
+        >
+          Experience
+        </motion.h2>
 
-        {/* Timeline */}
-        <div className="relative space-y-8">
-          {/* Timeline Line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-accent via-accent to-transparent opacity-30" />
+        <div className="relative mt-16">
+          {/* Timeline rail */}
+          <div className="absolute left-[7px] top-3 bottom-8 w-px bg-gradient-to-b from-white/10 via-white/5 to-transparent hidden md:block" />
 
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              viewport={{ once: true }}
-              className={`relative flex gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-            >
-              {/* Timeline Dot */}
-              <div className="absolute left-0 md:left-1/2 top-8 -translate-x-1/2 z-10">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: index * 0.1 + 0.2 }}
-                  viewport={{ once: true }}
-                  className="w-12 h-12 bg-dark border-2 border-accent rounded-full flex items-center justify-center"
+          <div className="space-y-10">
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.18 + i * 0.15 }}
+                className="md:pl-10 relative"
+              >
+                {/* Timeline dot */}
+                <div
+                  className={`absolute left-0 top-[22px] hidden md:flex items-center justify-center w-3.5 h-3.5 rounded-full border ${
+                    exp.current
+                      ? 'bg-white border-white'
+                      : 'bg-transparent border-white/25'
+                  }`}
                 >
-                  <FiBriefcase className="text-accent" size={20} />
-                </motion.div>
-              </div>
+                  {exp.current && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-black" />
+                  )}
+                </div>
 
-              {/* Content */}
-              <div className="md:w-1/2 ml-20 md:ml-0">
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  className="card-premium p-8 rounded-xl"
-                >
-                  <div className="flex items-start justify-between mb-4">
+                <div className="card-premium p-8">
+                  {/* Header row */}
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                     <div>
-                      <h3 className="text-2xl font-black mb-2">
-                        <span className="gradient-text">{exp.role.split('|')[0].trim()}</span>
+                      <h3 className="text-base font-semibold text-white leading-snug">
+                        {exp.title}
                       </h3>
-                      <p className="text-lg font-semibold text-gray-300">{exp.company}</p>
+                      <p className="text-sm text-white/45 mt-0.5">{exp.company}</p>
                     </div>
-                    <span className="badge-success">{exp.status}</span>
+                    {exp.current && (
+                      <span className="badge-accent self-start flex-shrink-0">Current</span>
+                    )}
                   </div>
 
-                  {/* Meta Info */}
-                  <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-400">
-                    <div className="flex items-center gap-2">
-                      <FiCalendar size={16} className="text-accent" />
+                  {/* Meta */}
+                  <div className="flex flex-wrap gap-4 text-xs text-white/30 mb-4">
+                    <span className="flex items-center gap-1.5">
+                      <FiCalendar size={10} />
                       {exp.period}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <FiMapPin size={16} className="text-accent" />
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <FiMapPin size={10} />
                       {exp.location}
-                    </div>
+                    </span>
                   </div>
 
-                  {/* Highlights */}
-                  <ul className="space-y-3 mb-6">
-                    {exp.highlights.map((highlight, i) => (
-                      <li key={i} className="flex items-start gap-3 text-gray-300">
-                        <FiCheckCircle className="text-success mt-1 flex-shrink-0" size={18} />
-                        <span className="text-sm leading-relaxed">{highlight}</span>
+                  {/* Project label */}
+                  <p className="text-xs text-white/30 italic mb-5">{exp.project}</p>
+
+                  {/* Achievements */}
+                  <ul className="space-y-2.5 mb-6">
+                    {exp.achievements.map((a, j) => (
+                      <li key={j} className="flex gap-3 text-sm text-white/50 leading-relaxed">
+                        <span className="flex-shrink-0 mt-[9px] w-1 h-1 rounded-full bg-white/20" />
+                        {a}
                       </li>
                     ))}
                   </ul>
 
-                  {/* Technologies */}
+                  {/* Stack chips */}
                   <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, i) => (
-                      <span key={i} className="badge-accent text-xs">
+                    {exp.stack.map((tech) => (
+                      <span key={tech} className="badge">
                         {tech}
                       </span>
                     ))}
                   </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

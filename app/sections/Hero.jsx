@@ -1,140 +1,137 @@
-'use client';
+'use client'
+import { motion } from 'framer-motion'
+import { Link } from 'react-scroll'
+import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiExternalLink } from 'react-icons/fi'
 
-import { motion } from 'framer-motion';
-import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
-import { Link } from 'react-scroll';
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.15 },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] } },
+}
 
 export default function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: 'easeOut' },
-    },
-  };
-
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-10">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Subtle dot grid */}
+      <div
+        className="absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
+      {/* Radial vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent_40%,#000_100%)]" />
+
       <motion.div
-        variants={containerVariants}
+        variants={container}
         initial="hidden"
-        animate="visible"
-        className="relative z-10 max-w-5xl mx-auto text-center px-4 sm:px-6"
+        animate="show"
+        className="relative z-10 text-center max-w-5xl mx-auto px-6 py-32"
       >
-        {/* Badge */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <span className="badge-accent inline-block">
-            🚀 Available for Opportunities
+        {/* Live status badge */}
+        <motion.div variants={item} className="inline-flex items-center gap-2.5 mb-10">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+          </span>
+          <span className="text-xs text-white/40 tracking-[0.25em] uppercase font-medium">
+            Available for opportunities
           </span>
         </motion.div>
 
-        {/* Main Heading */}
+        {/* Main heading */}
         <motion.h1
-          variants={itemVariants}
-          className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
+          variants={item}
+          className="text-[clamp(3rem,10vw,7rem)] font-bold tracking-[-0.03em] leading-[1.02] mb-5"
         >
-          <span className="gradient-text">Full Stack</span>
+          <span className="text-white">Mukunthan</span>
           <br />
-          <span className="text-white">Engineer</span>
+          <span className="text-white/15">Karuppaiah S</span>
         </motion.h1>
 
-        {/* Subheading */}
-        <motion.h2
-          variants={itemVariants}
-          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-gray-400"
-        >
-          DevOps • Cloud • Architecture
-        </motion.h2>
+        {/* Role divider */}
+        <motion.div variants={item} className="flex items-center justify-center gap-4 mb-7">
+          <div className="h-px flex-1 max-w-[60px] bg-gradient-to-r from-transparent to-white/15" />
+          <p className="text-xs md:text-sm font-medium tracking-[0.22em] uppercase text-white/35">
+            Full Stack Engineer · DevOps · Cloud
+          </p>
+          <div className="h-px flex-1 max-w-[60px] bg-gradient-to-l from-transparent to-white/15" />
+        </motion.div>
 
         {/* Description */}
         <motion.p
-          variants={itemVariants}
-          className="text-lg md:text-xl text-gray-500 mb-10 max-w-3xl mx-auto leading-relaxed font-light"
+          variants={item}
+          className="text-base md:text-lg text-white/40 max-w-xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Building scalable cloud solutions with <span className="text-white font-semibold">Kubernetes</span>, <span className="text-white font-semibold">Docker</span>, and modern technologies.
-          Architecting resilient systems that power enterprise applications and drive business growth.
+          Building production-grade systems at{' '}
+          <span className="text-white/75 font-normal">Spizen Technologies</span> —
+          Kubernetes clusters, React frontends, and everything in between.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTAs */}
         <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-12 flex-wrap"
+          variants={item}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16"
         >
-          <Link
-            to="projects"
-            spy
-            smooth
-            className="btn-primary cursor-pointer flex items-center justify-center gap-2"
-          >
-            View My Work ↓
+          <Link to="projects" smooth duration={700} offset={-70}>
+            <button className="btn-primary group min-w-[148px]">
+              View My Work
+              <FiArrowDown
+                size={14}
+                className="ml-2 group-hover:translate-y-0.5 transition-transform"
+              />
+            </button>
           </Link>
           <a
             href="https://github.com/Mukunth1004"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary flex items-center justify-center gap-2"
           >
-            <FiGithub size={20} /> GitHub Profile
+            <button className="btn-secondary group min-w-[148px]">
+              <FiGithub size={14} className="mr-2" />
+              GitHub
+            </button>
           </a>
         </motion.div>
 
-        {/* Social Links */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center gap-6 mb-12"
-        >
-          <a
-            href="mailto:mukunth.s1004@gmail.com"
-            className="p-3 glass-effect rounded-full hover:glow-box transition-all"
-            title="Email"
-          >
-            <FiMail size={24} className="text-white" />
-          </a>
-          <a
-            href="https://linkedin.com/in/s-mukunth1004"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 glass-effect rounded-full hover:glow-box transition-all"
-            title="LinkedIn"
-          >
-            <FiLinkedin size={24} className="text-white" />
-          </a>
-          <a
-            href="https://github.com/Mukunth1004"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 glass-effect rounded-full hover:glow-box transition-all"
-            title="GitHub"
-          >
-            <FiGithub size={24} className="text-white" />
-          </a>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center"
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-sm text-gray-600 font-medium">Scroll to explore</p>
-            <FiArrowDown className="text-white text-2xl animate-bounce" />
-          </div>
+        {/* Social row */}
+        <motion.div variants={item} className="flex items-center justify-center gap-7">
+          {[
+            { icon: FiMail, href: 'mailto:mukunth.s1004@gmail.com', label: 'Email' },
+            { icon: FiLinkedin, href: 'https://www.linkedin.com/in/s-mukunth1004', label: 'LinkedIn' },
+            { icon: FiGithub, href: 'https://github.com/Mukunth1004', label: 'GitHub' },
+            { icon: FiExternalLink, href: 'https://gitlab.com/mukunth.s1004', label: 'GitLab' },
+          ].map(({ icon: Icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-white/20 hover:text-white/70 transition-colors duration-300"
+            >
+              <Icon size={17} />
+            </a>
+          ))}
         </motion.div>
       </motion.div>
+
+      {/* Scroll cue */}
+      <motion.div
+        animate={{ y: [0, 7, 0] }}
+        transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut' }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <FiArrowDown className="text-white/15" size={18} />
+      </motion.div>
     </section>
-  );
+  )
 }

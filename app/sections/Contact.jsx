@@ -1,131 +1,117 @@
-'use client';
+'use client'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import { FiMail, FiGithub, FiLinkedin, FiExternalLink, FiArrowRight } from 'react-icons/fi'
 
-import { motion } from 'framer-motion';
-import { FiMail, FiGithub, FiLinkedin, FiGlobe, FiArrowRight } from 'react-icons/fi';
+const contacts = [
+  {
+    label: 'Email',
+    value: 'mukunth.s1004@gmail.com',
+    href: 'mailto:mukunth.s1004@gmail.com',
+    icon: FiMail,
+    sub: 'Best for project inquiries',
+  },
+  {
+    label: 'LinkedIn',
+    value: '/in/s-mukunth1004',
+    href: 'https://www.linkedin.com/in/s-mukunth1004',
+    icon: FiLinkedin,
+    sub: 'Professional network',
+  },
+  {
+    label: 'GitHub',
+    value: 'Mukunth1004',
+    href: 'https://github.com/Mukunth1004',
+    icon: FiGithub,
+    sub: 'Open source & projects',
+  },
+  {
+    label: 'GitLab',
+    value: 'mukunth.s1004',
+    href: 'https://gitlab.com/mukunth.s1004',
+    icon: FiExternalLink,
+    sub: 'CI/CD & private repos',
+  },
+]
 
 export default function Contact() {
-  const contacts = [
-    {
-      icon: FiMail,
-      label: 'Email',
-      value: 'mukunth.s1004@gmail.com',
-      link: 'mailto:mukunth.s1004@gmail.com',
-      description: 'Drop me a line for opportunities',
-    },
-    {
-      icon: FiGithub,
-      label: 'GitHub',
-      value: '@Mukunth1004',
-      link: 'https://github.com/Mukunth1004',
-      description: 'Check out my open source work',
-    },
-    {
-      icon: FiLinkedin,
-      label: 'LinkedIn',
-      value: 's-mukunth1004',
-      link: 'https://www.linkedin.com/in/s-mukunth1004',
-      description: 'Connect with me professionally',
-    },
-    {
-      icon: FiGlobe,
-      label: 'Portfolio',
-      value: 'mukunthan-portfolio-z7if.vercel.app',
-      link: 'https://mukunthan-portfolio-z7if.vercel.app',
-      description: 'This website',
-    },
-  ];
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="contact" className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto w-full">
-        {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+    <section id="contact" className="py-32 px-6">
+      <div className="max-w-3xl mx-auto text-center" ref={ref}>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          className="section-eyebrow"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
-            <span className="gradient-text">Let's</span> Connect
-          </h2>
-          <p className="text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Ready for exciting opportunities? Reach out to discuss how I can contribute to your next big project.
-          </p>
-          <div className="h-1 w-24 bg-gradient-to-r from-white to-transparent rounded-full mx-auto mt-6" />
-        </motion.div>
-
-        {/* Contact Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {contacts.map((contact, index) => {
-            const Icon = contact.icon;
-            return (
-              <motion.a
-                key={index}
-                href={contact.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.8 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-                className="card-premium p-8 rounded-xl group cursor-pointer"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
-                    <Icon className="text-white text-3xl" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-black text-white">{contact.label}</h3>
-                    <p className="text-sm text-gray-500 font-medium">{contact.description}</p>
-                  </div>
-                </div>
-                <p className="text-gray-300 font-semibold break-all group-hover:text-white transition-colors">
-                  {contact.value}
-                </p>
-              </motion.a>
-            );
-          })}
-        </div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="card-premium p-12 rounded-xl text-center max-w-2xl mx-auto"
+          Get in touch
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="section-heading"
         >
-          <h3 className="text-3xl font-black mb-4">Ready to Work Together?</h3>
-          <p className="text-gray-500 mb-8 text-lg">
-            I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
-          </p>
-          <a
-            href="mailto:mukunth.s1004@gmail.com"
-            className="btn-primary inline-flex items-center gap-2"
-          >
-            Send Me an Email
-            <FiArrowRight size={20} />
+          Let's Build Something
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.18 }}
+          className="text-white/40 mt-5 mb-12 leading-relaxed max-w-md mx-auto text-[0.95rem]"
+        >
+          Open to full-time roles, freelance projects, and interesting conversations.
+          Based in Chennai — remote-friendly.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.26 }}
+          className="mb-14"
+        >
+          <a href="mailto:mukunth.s1004@gmail.com">
+            <button className="btn-primary group">
+              Say Hello
+              <FiArrowRight size={14} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
+            </button>
           </a>
         </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {contacts.map(({ label, value, href, icon: Icon, sub }, i) => (
+            <motion.a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 18 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 + i * 0.08 }}
+              className="card-premium p-5 text-left group hover:border-white/15"
+            >
+              <Icon size={15} className="text-white/35 mb-3 group-hover:text-white/60 transition-colors" />
+              <div className="text-xs text-white/25 mb-1 font-medium tracking-wide uppercase">{label}</div>
+              <div className="text-xs text-white/65 font-medium leading-snug truncate">{value}</div>
+              <div className="text-xs text-white/22 mt-1">{sub}</div>
+            </motion.a>
+          ))}
+        </div>
 
         {/* Footer */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-16 pt-8 border-t border-gray-800"
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.7 }}
+          className="mt-20 pt-10 border-t border-white/[0.05] text-xs text-white/18 space-y-1"
         >
-          <p className="text-gray-600 text-sm">
-            © 2024 Mukunthan S. Built with Next.js, React, and Framer Motion.
-          </p>
-          <p className="text-gray-700 text-xs mt-2">
-            Hosted on Vercel. Always learning, always building. 🚀
-          </p>
+          <p>Built with Next.js 14, React 18 & Framer Motion · Hosted on Vercel</p>
+          <p>© 2025 Mukunthan Karuppaiah S · Chennai, India</p>
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

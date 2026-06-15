@@ -1,215 +1,194 @@
-'use client';
+'use client'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import { FiExternalLink, FiGithub } from 'react-icons/fi'
 
-import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiStar, FiUsers, FiTrendingUp } from 'react-icons/fi';
+const featured = [
+  {
+    name: 'MyBuildGuide',
+    tagline: 'Construction Project Management Platform',
+    description:
+      'Production app serving 10K+ users deployed on AppStore & PlayStore. Led full Kubernetes migration (7 services + 6 PostgreSQL DBs) from Orion to Hetzner K3s with 99.8% uptime. Reduced API response times by 50% for 100K+ record reports. Resolved 20+ production bugs across 7 microservices. Designed Apache Superset KPI dashboards and implemented the Pro Partner Program.',
+    metrics: [
+      { label: 'Uptime', value: '99.8%' },
+      { label: 'API Speed', value: '50% faster' },
+      { label: 'Users', value: '10K+' },
+      { label: 'Services', value: '7 micro' },
+    ],
+    stack: ['Kubernetes', 'Docker', 'Hetzner K3s', 'PostgreSQL', 'GitLab CI/CD', 'Helm', 'React', 'Node.js', 'Apache Superset'],
+    status: 'Production',
+    statusColor: 'green',
+    link: null,
+  },
+  {
+    name: 'AI Document Intelligence Platform',
+    tagline: 'RAG-Powered Q&A for Multi-Format Documents',
+    description:
+      'End-to-end Retrieval-Augmented Generation platform with FastAPI, Next.js, PostgreSQL + pgvector. Semantic vector search using Hugging Face embeddings supporting PDF, DOCX, TXT, and Markdown. Optimized vector search achieving <500ms response time. Redis caching reduced API calls by 60%. Token-aware document chunking, JWT authentication with user quotas, chat persistence.',
+    metrics: [
+      { label: 'Response', value: '<500ms' },
+      { label: 'API Calls', value: '−60%' },
+      { label: 'Formats', value: '4 types' },
+      { label: 'Auth', value: 'JWT + quotas' },
+    ],
+    stack: ['FastAPI', 'Next.js', 'PostgreSQL', 'pgvector', 'Hugging Face', 'Redis', 'Google Gemini API', 'Vercel'],
+    status: 'Active',
+    statusColor: 'blue',
+    link: null,
+  },
+]
+
+const other = [
+  {
+    name: 'Phoenix — Shopify Checkout Builder',
+    description:
+      'Full CSR → SSR migration using Remix. PageSpeed: Performance 45 → 86+, Accessibility 86 → 100, SEO 98 → 100. All Core Web Vitals improved.',
+    stack: ['Remix SSR', 'React', 'TypeScript', 'Shopify', 'Puck Editor'],
+    status: 'Live',
+    link: null,
+  },
+  {
+    name: 'Cloud Cost Prediction (KONE)',
+    description:
+      'XGBoost regression for AWS cost forecasting with engineered time-series features. FastAPI backend with service-wise breakdowns for EC2, S3, Lambda, DynamoDB.',
+    stack: ['Python', 'XGBoost', 'FastAPI', 'Scikit-learn', 'AWS'],
+    status: 'Complete',
+    link: null,
+  },
+  {
+    name: 'No Limit Nodes',
+    description: 'Production web platform with modern frontend, cloud deployment, and live traffic.',
+    stack: ['React', 'Node.js', 'Cloud Infrastructure'],
+    status: 'Live',
+    link: 'https://nolimitnodes.com',
+  },
+]
+
+const statusStyles = {
+  Production: 'text-green-400 bg-green-400/10 border-green-400/20',
+  Active: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+  Live: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+  Complete: 'text-white/40 bg-white/5 border-white/10',
+}
+
+function StatusBadge({ status }) {
+  return (
+    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${statusStyles[status] || statusStyles.Complete}`}>
+      {status}
+    </span>
+  )
+}
 
 export default function Projects() {
-  const projects = [
-    {
-      title: 'MyBuildGuide',
-      subtitle: 'Construction Project Management Platform',
-      description: 'Architected Kubernetes cluster migration, optimized database queries achieving 65% performance improvement. Implemented 99.8% uptime infrastructure with zero data loss migration of 150+ GB.',
-      metrics: [
-        { label: 'Uptime', value: '99.8%' },
-        { label: 'Performance', value: '+65%' },
-        { label: 'Users', value: '10K+' },
-      ],
-      tech: ['Kubernetes', 'Docker', 'PostgreSQL', 'Hetzner Cloud', 'GitLab CI/CD', 'React'],
-      link: 'https://nolimitnodes.com/',
-      status: 'Production',
-      featured: true,
-    },
-    {
-      title: 'AI Document Intelligence',
-      subtitle: 'RAG-Based Q&A System',
-      description: 'FastAPI microservice with Claude AI integration. Engineered Redis caching reducing API calls by 60%. Deployed on Kubernetes with Prometheus monitoring achieving <500ms response time.',
-      metrics: [
-        { label: 'Response Time', value: '<500ms' },
-        { label: 'API Reduction', value: '-60%' },
-        { label: 'Throughput', value: '1000+ req/min' },
-      ],
-      tech: ['FastAPI', 'Claude API', 'Redis', 'Docker', 'Kubernetes', 'Prometheus'],
-      link: 'https://github.com/Mukunth1004',
-      status: 'Active',
-      featured: true,
-    },
-    {
-      title: 'Phoenix - Checkout Builder',
-      subtitle: 'Shopify Payment Solutions',
-      description: 'Complete SSR migration using Remix. Improved PageSpeed Performance from 45 to 86+, SEO from 98 to 100, Accessibility from 86 to 100. Built customizable components for merchants.',
-      metrics: [
-        { label: 'Performance', value: '45→86+' },
-        { label: 'SEO Score', value: '98→100' },
-        { label: 'Accessibility', value: '86→100' },
-      ],
-      tech: ['Remix', 'React', 'TypeScript', 'Node.js', 'Performance Optimization'],
-      link: 'https://github.com/Mukunth1004',
-      status: 'Complete',
-    },
-    {
-      title: 'No Limit Nodes',
-      subtitle: 'Infrastructure Management Platform',
-      description: 'High-performance platform with real-time monitoring and automated deployments. Serverless architecture with global edge deployments and advanced analytics.',
-      metrics: [
-        { label: 'Availability', value: '99.9%' },
-        { label: 'Response', value: '<100ms' },
-        { label: 'Regions', value: 'Global' },
-      ],
-      tech: ['React', 'Node.js', 'Kubernetes', 'Docker', 'AWS Lambda'],
-      link: 'https://nolimitnodes.com/',
-      status: 'Live',
-    },
-    {
-      title: 'Cost Prediction Model',
-      subtitle: 'ML-Based AWS Billing Analysis',
-      description: 'Hybrid LSTM model with multi-head attention for AWS billing predictions. Achieved MAE of 2.13 and RMSE of 3.47. Optimized via MinMax scaling and feature engineering.',
-      metrics: [
-        { label: 'MAE', value: '2.13' },
-        { label: 'RMSE', value: '3.47' },
-        { label: 'Efficiency', value: '+40%' },
-      ],
-      tech: ['Python', 'TensorFlow', 'LSTM', 'XGBoost', 'AWS'],
-      link: 'https://github.com/Mukunth1004',
-      status: 'Complete',
-    },
-    {
-      title: 'Dynamic Form Builder',
-      subtitle: 'Google Forms-like Platform',
-      description: 'Built with Remix SSR and JWT authentication. Supports role-based access control, dynamic form creation, and duplicate submission prevention with responsive dashboards.',
-      metrics: [
-        { label: 'Auth', value: 'JWT' },
-        { label: 'Forms', value: 'Dynamic' },
-        { label: 'Security', value: 'Enterprise' },
-      ],
-      tech: ['Remix', 'JWT', 'React', 'Node.js', 'MySQL'],
-      link: 'https://github.com/Mukunth1004',
-      status: 'Production',
-    },
-  ];
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="projects" className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
+    <section id="projects" className="py-32 px-6 bg-white/[0.01]">
+      <div className="max-w-6xl mx-auto" ref={ref}>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          className="section-eyebrow"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
-            <span className="gradient-text">Featured</span> Projects
-          </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-accent to-transparent rounded-full" />
-        </motion.div>
+          Work
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="section-heading"
+        >
+          Projects
+        </motion.h2>
 
-        {/* Featured Projects First */}
-        <div className="space-y-8 mb-12">
-          {projects.filter(p => p.featured).map((project, index) => (
+        {/* Featured projects */}
+        <div className="space-y-5 mt-16">
+          {featured.map((proj, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="card-premium p-8 rounded-xl overflow-hidden group relative"
+              key={proj.name}
+              initial={{ opacity: 0, y: 28 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.18 + i * 0.14 }}
+              className="card-premium p-8 md:p-10"
             >
-              {/* Background Gradient */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-r from-accent to-transparent transition-opacity duration-300" />
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                <div>
+                  <h3 className="text-lg font-bold tracking-tight">{proj.name}</h3>
+                  <p className="text-sm text-white/35 mt-0.5">{proj.tagline}</p>
+                </div>
+                <div className="flex items-center gap-3 flex-shrink-0">
+                  <StatusBadge status={proj.status} />
+                  {proj.link && (
+                    <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white transition-colors">
+                      <FiExternalLink size={16} />
+                    </a>
+                  )}
+                </div>
+              </div>
 
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-3xl font-black gradient-text mb-2">{project.title}</h3>
-                    <p className="text-lg text-gray-400 font-medium">{project.subtitle}</p>
+              <p className="text-sm text-white/45 leading-relaxed mb-7">{proj.description}</p>
+
+              {/* Metrics bar */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-7">
+                {proj.metrics.map((m) => (
+                  <div key={m.label} className="rounded-xl bg-white/[0.03] border border-white/[0.06] py-3 px-4 text-center">
+                    <div className="text-sm font-semibold text-white/80">{m.value}</div>
+                    <div className="text-xs text-white/30 mt-0.5">{m.label}</div>
                   </div>
-                  <span className="badge-success">{project.status}</span>
-                </div>
+                ))}
+              </div>
 
-                <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-4 mb-6 py-6 border-y border-gray-700">
-                  {project.metrics.map((metric, i) => (
-                    <div key={i} className="text-center">
-                      <div className="gradient-text font-black text-2xl">{metric.value}</div>
-                      <div className="text-xs text-gray-400">{metric.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, i) => (
-                    <span key={i} className="badge-accent text-xs">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-accent hover:text-accent-light transition-colors font-bold group/link"
-                >
-                  View Project
-                  <FiExternalLink className="group-hover/link:translate-x-1 transition-transform" size={18} />
-                </a>
+              {/* Stack */}
+              <div className="flex flex-wrap gap-2">
+                {proj.stack.map((tech) => (
+                  <span key={tech} className="badge">{tech}</span>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Other Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.filter(p => !p.featured).map((project, index) => (
+        {/* Other projects */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.52 }}
+          className="text-xs tracking-[0.22em] uppercase text-white/20 mb-5 mt-14"
+        >
+          Other Projects
+        </motion.p>
+        <div className="grid md:grid-cols-3 gap-4">
+          {other.map((proj, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="card-premium p-6 rounded-xl group"
+              key={proj.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.56 + i * 0.09 }}
+              className="card-premium p-6 flex flex-col"
             >
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="text-xl font-black text-white flex-1">{project.title}</h3>
-                <span className="badge-accent text-xs">{project.status}</span>
+              <div className="flex items-start justify-between mb-3">
+                <h4 className="text-sm font-semibold leading-snug pr-2">{proj.name}</h4>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <StatusBadge status={proj.status} />
+                  {proj.link && (
+                    <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-white/25 hover:text-white transition-colors">
+                      <FiExternalLink size={13} />
+                    </a>
+                  )}
+                </div>
               </div>
-
-              <p className="text-gray-400 text-sm mb-4 line-clamp-2">{project.subtitle}</p>
-
-              {/* Mini Metrics */}
-              <div className="grid grid-cols-3 gap-2 mb-4 text-center text-xs">
-                {project.metrics.slice(0, 3).map((metric, i) => (
-                  <div key={i}>
-                    <div className="text-accent font-bold">{metric.value}</div>
-                  </div>
+              <p className="text-xs text-white/35 leading-relaxed mb-4 flex-1">{proj.description}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {proj.stack.map((tech) => (
+                  <span key={tech} className="text-xs text-white/30 bg-white/[0.04] px-2 py-0.5 rounded">{tech}</span>
                 ))}
               </div>
-
-              <div className="flex flex-wrap gap-1 mb-4">
-                {project.tech.slice(0, 3).map((tech, i) => (
-                  <span key={i} className="badge-accent text-xs">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-accent hover:text-accent-light transition-colors font-semibold text-sm"
-              >
-                View <FiExternalLink size={14} />
-              </a>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
