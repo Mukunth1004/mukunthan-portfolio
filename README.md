@@ -1,4 +1,4 @@
-# 🌟 Mukunthan's Luxury Portfolio Website
+# 🌟 Mukunthan's Portfolio Website
 
 > **🚀 LIVE & DEPLOYED**  
 > **Website URL:** https://mukunthan-portfolio-z7if.vercel.app/
@@ -7,7 +7,7 @@ A stunning, modern portfolio website showcasing Full Stack Engineer expertise in
 
 ## ✨ Features
 
-- 🎨 **Luxury Design** - Minimalist black & white aesthetic
+- 🎨 ** Design** - Minimalist black & white aesthetic
 - ⚡ **High Performance** - Optimized for speed with Next.js
 - 📱 **Responsive** - Mobile-first responsive design
 - 🎬 **Smooth Animations** - Elegant transitions with Framer Motion
