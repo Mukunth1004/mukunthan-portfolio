@@ -12,12 +12,11 @@ const experiences = [
     project: 'MyBuildGuide — Construction Project Management Platform',
     current: true,
     achievements: [
-      'Led infrastructure transformation: Kubernetes cluster migration (7 services + 6 PostgreSQL databases) from Orion to Hetzner K3s with GitLab CI/CD achieving 99.8% uptime; led 3-person team on deployment and validation.',
-      'Executed zero-downtime migration across 6 DB instances (taskmanager 207MB, erpdatabase 51K+ rows, accounting, guidebuilder, filesystem, buildpros); reduced API response time 50% for 100K+ record reports through indexing and pagination.',
-      'Resolved 20+ production bugs across 7 microservices; architected Apache Superset KPI dashboards with production Helm configuration.',
-      'Implemented Pro Partner Program (Helm charts + Docker) with auto-login and partner hub integration serving 10K+ users.',
+      'Led infrastructure modernization for MyBuildGuide SaaS as Backend Engineer, managing Kubernetes (K3s) clusters hosting 7 microservices across Node.js, Flask, and FastAPI (asyncpg + Pydantic v2) Python backends alongside 6 PostgreSQL databases; achieved 99.8% uptime and zero data loss.',
+      'Optimized PostgreSQL query performance across FastAPI and Flask microservices through indexing, query tuning, pagination, and async query restructuring (asyncpg), achieving 50%+ reduction in API response times for datasets exceeding 100K records; built KPI reporting dashboards and data pipelines using Apache Superset.',
+      'Engineered 4-stage GitLab CI/CD deployment flows across 27 jobs using Git-based selective builds and Docker containers for 5 microservices across 3 environments (Dev, UAT, Prod); managed 6 Helm chart deployments on Kubernetes with atomic rollbacks and manual production gates.',
     ],
-    stack: ['Kubernetes (K3s)', 'Docker', 'Hetzner', 'GitLab CI/CD', 'PostgreSQL', 'Helm', 'Traefik', 'React', 'Node.js'],
+    stack: ['Kubernetes (K3s)', 'Docker', 'FastAPI', 'Flask', 'asyncpg', 'Pydantic v2', 'PostgreSQL', 'Node.js', 'Python', 'React', 'Helm', 'GitLab CI/CD'],
   },
   {
     title: 'Software Development Engineer',
@@ -27,11 +26,10 @@ const experiences = [
     project: 'Phoenix — E-Commerce Payment Checkout Builder for Shopify',
     current: false,
     achievements: [
-      'Led complete migration of Shopify checkout flow from Client-Side Rendering to Server-Side Rendering using Remix; achieved significant PageSpeed improvements: Performance (45 → 86+), Accessibility (86 → 100), SEO (98 → 100).',
-      'Improved Core Web Vitals across all metrics — LCP, FID, CLS.',
-      'Engineered reusable, client-specific components using Puck Editor enabling merchants to customize checkout experiences and deliver tailored payment pages without code changes.',
+      'Engineered migration of Shopify SaaS checkout flow from CSR to SSR using React.js and Remix, optimising HTML5, CSS3, and JavaScript delivery with REST API integrations to achieve PageSpeed Performance (45 → 86+), Accessibility (86 → 100), and SEO (98 → 100).',
+      'Developed reusable, client-specific React.js frontend components as a Software Developer with Node.js REST API backend integration using TypeScript, version-controlled via Git and validated through Jest unit tests, reducing per-client implementation effort.',
     ],
-    stack: ['Remix SSR', 'React', 'TypeScript', 'Shopify', 'Puck Editor', 'Node.js'],
+    stack: ['React.js', 'Remix SSR', 'TypeScript', 'Node.js', 'MySQL', 'Jest', 'GitHub Actions', 'Shopify'],
   },
   {
     title: 'Software Engineering Intern',
@@ -41,10 +39,10 @@ const experiences = [
     project: 'Cloud Cost Prediction System',
     current: false,
     achievements: [
-      'Designed and deployed a production-grade cloud cost prediction system using XGBoost regression with engineered time-series features (hour, day_of_week, month) and MinMax scaling on AWS billing datasets.',
-      'Built a full-stack application using FastAPI and a data preprocessing pipeline, exposing REST APIs for real-time cost forecasting and service-wise cost breakdowns across EC2, S3, Lambda, and DynamoDB.',
+      'Built end-to-end data processing pipelines with AI/ML integrations for data ingestion, cleansing, and feature engineering across 6 AWS services (EC2, S3, Lambda, DynamoDB, API Gateway, CloudWatch), processing 12 input features in SQL-based datasets for scalable cloud cost analysis.',
+      'Developed a real-time cost forecasting platform using XGBoost (100 estimators, early stopping, MAE/RMSE evaluation) and FastAPI REST APIs with 4 endpoints for predicting AWS infrastructure and IoT Core expenses, containerised with Docker for consistent deployment.',
     ],
-    stack: ['Python', 'FastAPI', 'XGBoost', 'Scikit-learn', 'AWS', 'REST APIs'],
+    stack: ['Python', 'FastAPI', 'XGBoost', 'Scikit-learn', 'AWS', 'Docker', 'REST APIs', 'Pandas'],
   },
 ]
 

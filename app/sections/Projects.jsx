@@ -8,7 +8,7 @@ const featured = [
     name: 'MyBuildGuide',
     tagline: 'Construction Project Management Platform',
     description:
-      'Production app serving 10K+ users deployed on AppStore & PlayStore. Led full Kubernetes migration (7 services + 6 PostgreSQL DBs) from Orion to Hetzner K3s with 99.8% uptime. Reduced API response times by 50% for 100K+ record reports. Resolved 20+ production bugs across 7 microservices. Designed Apache Superset KPI dashboards and implemented the Pro Partner Program.',
+      'Production SaaS app serving 10K+ users on AppStore & PlayStore. Managed Kubernetes (K3s) clusters hosting 7 microservices across Node.js, Flask, and FastAPI (asyncpg + Pydantic v2) backends alongside 6 PostgreSQL databases. Achieved 50%+ reduction in API response times for 100K+ record datasets through async query restructuring. Built KPI reporting dashboards and data pipelines using Apache Superset.',
     metrics: [
       { label: 'Uptime', value: '99.8%' },
       { label: 'API Speed', value: '50% faster' },
@@ -24,7 +24,7 @@ const featured = [
     name: 'AI Document Intelligence Platform',
     tagline: 'RAG-Powered Q&A for Multi-Format Documents',
     description:
-      'End-to-end Retrieval-Augmented Generation platform with FastAPI, Next.js, PostgreSQL + pgvector. Semantic vector search using Hugging Face embeddings supporting PDF, DOCX, TXT, and Markdown. Optimized vector search achieving <500ms response time. Redis caching reduced API calls by 60%. Token-aware document chunking, JWT authentication with user quotas, chat persistence.',
+      'End-to-end RAG SaaS platform using asynchronous programming with FastAPI REST APIs, PostgreSQL via SQLAlchemy ORM, pgvector, and Redis caching. Supports 4 document formats (PDF, DOCX, TXT, Markdown) handling 1,000+ concurrent requests per minute. Optimised semantic vector search with Hugging Face sentence-transformers achieving sub-500ms response times, reducing Gemini AI/ML integration calls by 60% and query latency by 40%. Event-driven architecture with tiktoken-based document chunking, PyJWT authentication, and Prometheus metrics.',
     metrics: [
       { label: 'Response', value: '<500ms' },
       { label: 'API Calls', value: '−60%' },
