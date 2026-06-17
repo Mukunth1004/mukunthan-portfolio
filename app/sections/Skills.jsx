@@ -5,27 +5,27 @@ import { useRef } from 'react'
 const groups = [
   {
     category: 'Languages',
-    skills: ['Python', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'SQL'],
+    skills: ['Python', 'TypeScript', 'JavaScript', 'SQL'],
   },
   {
-    category: 'Frontend',
-    skills: ['React.js', 'Remix (SSR)', 'Next.js', 'TailwindCSS', 'ES6+', 'Responsive Design'],
+    category: 'Frameworks & Libraries',
+    skills: ['FastAPI', 'React.js', 'Next.js', 'Node.js', 'TailwindCSS', 'PyTorch', 'TensorFlow', 'Hugging Face Transformers', 'ONNX Runtime'],
   },
   {
-    category: 'Backend & Databases',
-    skills: ['Node.js', 'Express.js', 'FastAPI', 'PostgreSQL', 'MySQL', 'REST APIs', 'JWT Auth', 'DBeaver'],
+    category: 'Databases',
+    skills: ['PostgreSQL', 'MySQL', 'Redis', 'pgvector'],
   },
   {
-    category: 'DevOps & Infra',
-    skills: ['Kubernetes (K3s)', 'Docker', 'Traefik', 'cert-manager', 'Longhorn', 'Rancher', 'Proxmox', 'Tailscale', 'Linux Admin'],
+    category: 'Data & Machine Learning',
+    skills: ['XGBoost', 'Scikit-learn', 'Pandas', 'CUDA', 'AI/ML Integrations'],
   },
   {
-    category: 'CI/CD & Cloud',
-    skills: ['GitLab CI/CD', 'Helm', 'Hetzner K3s', 'AWS (EC2, Lambda, S3)', 'StatefulSets', 'Apache Superset'],
+    category: 'DevOps & Cloud',
+    skills: ['Docker', 'Kubernetes', 'Helm', 'GitLab CI/CD', 'GitHub Actions', 'AWS'],
   },
   {
-    category: 'Tools & Version Control',
-    skills: ['Git', 'GitHub', 'GitLab', 'Postman', 'pgvector', 'Redis', 'Hugging Face'],
+    category: 'Tools',
+    skills: ['Git', 'Postman', 'Jira', 'Apache Superset'],
   },
 ]
 

@@ -12,11 +12,13 @@ const experiences = [
     project: 'MyBuildGuide — Construction Project Management Platform',
     current: true,
     achievements: [
-      'Led infrastructure modernization for MyBuildGuide SaaS as Backend Engineer, managing Kubernetes (K3s) clusters hosting 7 microservices across Node.js, Flask, and FastAPI (asyncpg + Pydantic v2) Python backends alongside 6 PostgreSQL databases; achieved 99.8% uptime and zero data loss.',
-      'Optimized PostgreSQL query performance across FastAPI and Flask microservices through indexing, query tuning, pagination, and async query restructuring (asyncpg), achieving 50%+ reduction in API response times for datasets exceeding 100K records; built KPI reporting dashboards and data pipelines using Apache Superset.',
-      'Engineered 4-stage GitLab CI/CD deployment flows across 27 jobs using Git-based selective builds and Docker containers for 5 microservices across 3 environments (Dev, UAT, Prod); managed 6 Helm chart deployments on Kubernetes with atomic rollbacks and manual production gates.',
+      'Led infrastructure modernization for the MyBuildGuide SaaS platform, managing Kubernetes (K3s) clusters hosting 7 production microservices.',
+      'Managed 6 PostgreSQL databases and executed zero-downtime migrations, achieving 99.8% uptime with zero data loss.',
+      'Optimized PostgreSQL performance through indexing, query tuning, and async query restructuring, reducing API response times by 50%+ for 100K+ records.',
+      'Built KPI dashboards and data pipelines using Apache Superset, enabling faster business reporting and analytics.',
+      'Engineered GitLab CI/CD pipelines across 27 jobs and managed Helm-based Kubernetes deployments across Dev, UAT, and Production environments.',
     ],
-    stack: ['Kubernetes (K3s)', 'Docker', 'FastAPI', 'Flask', 'asyncpg', 'Pydantic v2', 'PostgreSQL', 'Node.js', 'Python', 'React', 'Helm', 'GitLab CI/CD'],
+    stack: ['Python', 'JavaScript', 'Node.js', 'PostgreSQL', 'Kubernetes', 'Docker', 'GitLab CI/CD'],
   },
   {
     title: 'Software Development Engineer',
@@ -26,10 +28,12 @@ const experiences = [
     project: 'Phoenix — E-Commerce Payment Checkout Builder for Shopify',
     current: false,
     achievements: [
-      'Engineered migration of Shopify SaaS checkout flow from CSR to SSR using React.js and Remix, optimising HTML5, CSS3, and JavaScript delivery with REST API integrations to achieve PageSpeed Performance (45 → 86+), Accessibility (86 → 100), and SEO (98 → 100).',
-      'Developed reusable, client-specific React.js frontend components as a Software Developer with Node.js REST API backend integration using TypeScript, version-controlled via Git and validated through Jest unit tests, reducing per-client implementation effort.',
+      'Engineered migration of a Shopify SaaS checkout flow from CSR to SSR using React.js and Remix, improving application performance and user experience.',
+      'Optimized HTML5, CSS3, and JavaScript delivery with REST API integrations, increasing PageSpeed Performance from 45 to 86+.',
+      'Improved platform quality by raising Accessibility from 86 to 100 and SEO from 98 to 100 through frontend optimization.',
+      'Developed reusable, client-specific React.js components with Node.js REST API integration, TypeScript, GitHub Actions CI/CD, and Jest testing, reducing per-client implementation effort.',
     ],
-    stack: ['React.js', 'Remix SSR', 'TypeScript', 'Node.js', 'MySQL', 'Jest', 'GitHub Actions', 'Shopify'],
+    stack: ['TypeScript', 'React', 'Remix', 'Node.js', 'MySQL', 'GitHub Actions'],
   },
   {
     title: 'Software Engineering Intern',
@@ -39,10 +43,12 @@ const experiences = [
     project: 'Cloud Cost Prediction System',
     current: false,
     achievements: [
-      'Built end-to-end data processing pipelines with AI/ML integrations for data ingestion, cleansing, and feature engineering across 6 AWS services (EC2, S3, Lambda, DynamoDB, API Gateway, CloudWatch), processing 12 input features in SQL-based datasets for scalable cloud cost analysis.',
-      'Developed a real-time cost forecasting platform using XGBoost (100 estimators, early stopping, MAE/RMSE evaluation) and FastAPI REST APIs with 4 endpoints for predicting AWS infrastructure and IoT Core expenses, containerised with Docker for consistent deployment.',
+      'Built end-to-end data pipelines for data ingestion, cleansing, and feature engineering with AI/ML integrations across 6 AWS services.',
+      'Processed 12 input features from SQL-based datasets to support scalable cloud cost analysis and forecasting workflows.',
+      'Developed a real-time cost forecasting platform using XGBoost with early stopping and MAE/RMSE-based model evaluation.',
+      'Built FastAPI REST APIs with 4 endpoints for AWS infrastructure and IoT Core cost prediction, and containerized the solution using Docker for consistent deployment.',
     ],
-    stack: ['Python', 'FastAPI', 'XGBoost', 'Scikit-learn', 'AWS', 'Docker', 'REST APIs', 'Pandas'],
+    stack: ['Python', 'FastAPI', 'XGBoost', 'TensorFlow', 'Scikit-learn', 'Pandas', 'NumPy', 'Docker'],
   },
 ]
 

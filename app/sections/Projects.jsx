@@ -5,20 +5,20 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi'
 
 const featured = [
   {
-    name: 'MyBuildGuide',
-    tagline: 'Construction Project Management Platform',
+    name: 'NeuralServe',
+    tagline: 'Transformer Inference & Optimization Platform',
     description:
-      'Production SaaS app serving 10K+ users on AppStore & PlayStore. Managed Kubernetes (K3s) clusters hosting 7 microservices across Node.js, Flask, and FastAPI (asyncpg + Pydantic v2) backends alongside 6 PostgreSQL databases. Achieved 50%+ reduction in API response times for 100K+ record datasets through async query restructuring. Built KPI reporting dashboards and data pipelines using Apache Superset.',
+      'Fine-tuned 66M-parameter DistilBERT on 67K SST-2 samples with PyTorch + CUDA mixed-precision training, achieving 92%+ validation accuracy in 3 epochs. Exported to ONNX with graph optimizations (attention fusion, constant folding, memory scheduling), cutting inference latency 40% faster than PyTorch baseline. Implemented 32-sample dynamic batching with Rust-backed HuggingFace tokenizers and ONNX Runtime, boosting throughput 4x over sequential inference. Built 6-endpoint FastAPI inference server with PostgreSQL logging and Docker deployment serving 1,000+ requests/minute.',
     metrics: [
-      { label: 'Uptime', value: '99.8%' },
-      { label: 'API Speed', value: '50% faster' },
-      { label: 'Users', value: '10K+' },
-      { label: 'Services', value: '7 micro' },
+      { label: 'Accuracy', value: '92%+' },
+      { label: 'Latency', value: '40% faster' },
+      { label: 'Throughput', value: '4x batch' },
+      { label: 'RPM', value: '1,000+' },
     ],
-    stack: ['Kubernetes', 'Docker', 'Hetzner K3s', 'PostgreSQL', 'GitLab CI/CD', 'Helm', 'React', 'Node.js', 'Apache Superset'],
-    status: 'Production',
-    statusColor: 'green',
-    link: null,
+    stack: ['PyTorch', 'ONNX Runtime', 'FastAPI', 'PostgreSQL', 'Docker', 'HuggingFace', 'CUDA', 'Next.js'],
+    status: 'Active',
+    statusColor: 'blue',
+    link: 'https://github.com/Mukunth1004/NeuralServe',
   },
   {
     name: 'AI Document Intelligence Platform',
@@ -48,22 +48,6 @@ const other = [
     link: 'https://github.com/Mukunth1004/CloudDeployX',
   },
   {
-    name: 'Faculty Information System',
-    description:
-      'Web-based ASP.NET system enabling faculty members to manage profiles, academic descriptions, and achievements. Role-based access control for faculty and administrative staff. Built with C# and .NET.',
-    stack: ['C#', '.NET', 'ASP.NET', 'SQL Server', 'MVC'],
-    status: 'Complete',
-    link: 'https://github.com/Mukunth1004/Faculty-Information-System',
-  },
-  {
-    name: 'Phoenix — Shopify Checkout Builder',
-    description:
-      'Full CSR → SSR migration using Remix. PageSpeed: Performance 45 → 86+, Accessibility 86 → 100, SEO 98 → 100. All Core Web Vitals improved.',
-    stack: ['Remix SSR', 'React', 'TypeScript', 'Shopify', 'Puck Editor'],
-    status: 'Live',
-    link: null,
-  },
-  {
     name: 'Cloud Cost Prediction (KONE)',
     description:
       'XGBoost regression for AWS cost forecasting with engineered time-series features. FastAPI backend with service-wise breakdowns for EC2, S3, Lambda, DynamoDB.',
@@ -72,11 +56,12 @@ const other = [
     link: null,
   },
   {
-    name: 'No Limit Nodes',
-    description: 'Production web platform with modern frontend, cloud deployment, and live traffic.',
-    stack: ['React', 'Node.js', 'Cloud Infrastructure'],
-    status: 'Live',
-    link: 'https://nolimitnodes.com',
+    name: 'Faculty Information System',
+    description:
+      'Web-based ASP.NET system enabling faculty members to manage profiles, academic descriptions, and achievements. Role-based access control for faculty and administrative staff. Built with C# and .NET.',
+    stack: ['C#', '.NET', 'ASP.NET', 'SQL Server', 'MVC'],
+    status: 'Complete',
+    link: 'https://github.com/Mukunth1004/Faculty-Information-System',
   },
 ]
 
@@ -138,7 +123,7 @@ export default function Projects() {
                   <StatusBadge status={proj.status} />
                   {proj.link && (
                     <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white transition-colors">
-                      <FiExternalLink size={16} />
+                      <FiGithub size={16} />
                     </a>
                   )}
                 </div>

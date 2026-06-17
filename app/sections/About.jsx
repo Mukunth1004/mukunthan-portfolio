@@ -4,16 +4,16 @@ import { useRef } from 'react'
 
 const stats = [
   { value: '99.8%', label: 'Uptime Achieved' },
-  { value: '50%', label: 'API Speed Gain' },
-  { value: '20+', label: 'Bugs Resolved' },
-  { value: '10K+', label: 'Users Served' },
+  { value: '50%+', label: 'API Speed Gain' },
+  { value: '1,000+', label: 'Requests / Min' },
+  { value: '7', label: 'Microservices Managed' },
 ]
 
 const highlights = [
-  'Led K8s migration of 7 services + 6 PostgreSQL DBs from Orion to Hetzner K3s',
-  'Zero-downtime DB migrations with 51K+ rows — taskmanager 207MB, erpdatabase and more',
-  'PageSpeed: Performance 45 → 86+, Accessibility 86 → 100, SEO 98 → 100',
-  'RAG platform with <500ms vector search, Redis caching reducing API calls by 60%',
+  'Managing Kubernetes (K3s) clusters with 7 microservices and 6 PostgreSQL databases at 99.8% uptime',
+  'Built transformer inference platform — DistilBERT fine-tuned with PyTorch + CUDA, 40% faster via ONNX',
+  'Engineered GitLab CI/CD across 27 jobs with Helm-based K8s deployments across Dev, UAT, and Production',
+  'RAG platform with sub-500ms vector search and Redis caching reducing API calls by 60%',
 ]
 
 export default function About() {
@@ -49,22 +49,30 @@ export default function About() {
             className="space-y-5"
           >
             <p className="text-white/55 leading-relaxed text-[0.95rem]">
-              I'm a Full Stack Engineer at{' '}
+              I&apos;m a{' '}
+              <span className="text-white font-medium">Full Stack Engineer</span> at{' '}
               <span className="text-white font-medium">Spizen Technologies</span>, Bangalore, building
-              and shipping production-grade systems end-to-end — React/Remix frontends, Node.js/FastAPI
-              backends, and Kubernetes-orchestrated infrastructure on Hetzner K3s.
+              and shipping production-grade systems end-to-end — from FastAPI and Node.js backends to
+              Kubernetes-orchestrated infrastructure and ML inference platforms.
             </p>
             <p className="text-white/55 leading-relaxed text-[0.95rem]">
-              My work sits at the intersection of product and platform: I architect features for real
-              users while owning the infrastructure they run on. I've managed large-scale database
-              migrations, resolved 20+ production bugs across 7 microservices, designed Apache Superset
-              KPI dashboards, and led CI/CD pipelines from GitLab to Helm deployments.
+              My work spans both product and platform: I manage{' '}
+              <span className="text-white font-medium">Kubernetes (K3s) clusters</span> hosting 7
+              microservices, execute zero-downtime PostgreSQL migrations, and build GitLab CI/CD
+              pipelines across 27 jobs with Helm deployments across Dev, UAT, and Production environments.
+            </p>
+            <p className="text-white/55 leading-relaxed text-[0.95rem]">
+              On the AI/ML side, I built{' '}
+              <span className="text-white font-medium">NeuralServe</span> — a transformer inference
+              platform fine-tuning DistilBERT with PyTorch + CUDA and optimizing via ONNX graph
+              compilation. I also built a RAG document intelligence platform using pgvector,
+              Hugging Face, and Redis achieving sub-500ms vector search.
             </p>
             <p className="text-white/55 leading-relaxed text-[0.95rem]">
               B.E. Computer Science from{' '}
-              <span className="text-white font-medium">Anna University</span> (2025). Before Spizen, I
-              drove a full CSR→SSR migration at Soft Suave and built ML-powered cost prediction at
-              KONE Elevator. I ship fast, measure obsessively, and iterate with data.
+              <span className="text-white font-medium">Anna University</span> (2025, CGPA 7.9).
+              Previously at Soft Suave Technologies (Shopify SSR migration, PageSpeed 45→86+)
+              and KONE Elevator (AWS cost prediction with XGBoost + FastAPI).
             </p>
 
             <ul className="space-y-2.5 pt-3">
@@ -114,7 +122,7 @@ export default function About() {
               <div>
                 <div className="text-sm font-medium text-white/80">Chennai / Bangalore, India</div>
                 <div className="text-xs text-white/30 mt-0.5">
-                  B.E. CSE · Anna University · 2025
+                  B.E. CSE · Anna University · 2025 · CGPA 7.9
                 </div>
               </div>
             </motion.div>
