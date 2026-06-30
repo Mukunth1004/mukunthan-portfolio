@@ -13,137 +13,140 @@ const featured = [
       { label: 'Response', value: '<500ms' },
       { label: 'API Calls', value: '−60%' },
       { label: 'Doc Formats', value: '4 types' },
-      { label: 'Auth', value: 'JWT + limits' },
+      { label: 'Rate Limit', value: '100/min' },
     ],
-    stack: ['Python', 'FastAPI', 'Next.js', 'PostgreSQL', 'pgvector', 'Hugging Face', 'Redis', 'Google Gemini API', 'Docker', 'Vercel'],
-    status: 'Active',
-    link: 'https://github.com/Mukunth1004/ai-document-intelligence',
+    stack: ['FastAPI', 'Next.js', 'PostgreSQL', 'pgvector', 'Hugging Face', 'Redis', 'Google Gemini', 'Docker', 'Vercel'],
     period: 'May 2026 – Jun 2026',
+    link: 'https://github.com/Mukunth1004/ai-document-intelligence',
+    gradient: 'from-indigo-500 to-purple-600',
   },
   {
     name: 'NeuralServe',
     tagline: 'Transformer Inference & Optimisation Platform',
     description:
-      'Production-grade Transformer inference platform — fine-tuned 66M-parameter DistilBERT on 67K SST-2 samples with PyTorch + CUDA mixed-precision training (92%+ accuracy). Exported to ONNX with graph optimisations (attention fusion, constant folding) cutting latency 40%. Implemented 32-sample dynamic batching with ONNX Runtime boosting throughput 4x. Built 6-endpoint FastAPI server with PostgreSQL logging and Docker deployment serving 1,000+ RPM.',
+      'Fine-tuned 66M-parameter DistilBERT on 67K SST-2 samples with PyTorch + CUDA (92%+ accuracy). Exported to ONNX with graph optimisations — attention fusion, constant folding — cutting latency 40%. Implemented 32-sample dynamic batching with ONNX Runtime, boosting throughput 4x. Built 6-endpoint FastAPI server with PostgreSQL logging and Docker deployment serving 1,000+ RPM.',
     metrics: [
       { label: 'Accuracy', value: '92%+' },
       { label: 'Latency', value: '40% faster' },
-      { label: 'Throughput', value: '4x batch' },
+      { label: 'Throughput', value: '4x' },
       { label: 'RPM', value: '1,000+' },
     ],
     stack: ['PyTorch', 'ONNX Runtime', 'FastAPI', 'PostgreSQL', 'Docker', 'HuggingFace', 'CUDA', 'Next.js'],
-    status: 'Active',
-    link: 'https://github.com/Mukunth1004/NeuralServe',
     period: 'Personal Project',
+    link: 'https://github.com/Mukunth1004/NeuralServe',
+    gradient: 'from-purple-500 to-violet-600',
   },
 ]
 
 const other = [
   {
     name: 'CloudDeployX',
-    description:
-      'Production-grade FastAPI on GCP Cloud Run with Docker multi-stage builds and GitHub Actions CI/CD via Workload Identity Federation. Auto-scales 0→10 instances with Cloud Logging + Monitoring.',
-    stack: ['FastAPI', 'Docker', 'GCP Cloud Run', 'GitHub Actions', 'Cloud Logging'],
-    status: 'Active',
+    description: 'Production-grade FastAPI on GCP Cloud Run with Docker multi-stage builds. Zero-downtime CI/CD via GitHub Actions + Workload Identity Federation. Auto-scales 0→10 instances.',
+    stack: ['FastAPI', 'Docker', 'GCP Cloud Run', 'GitHub Actions'],
     link: 'https://github.com/Mukunth1004/CloudDeployX',
   },
   {
     name: 'Cloud Cost Prediction (KONE)',
-    description:
-      'XGBoost regression for AWS cost forecasting with 12 engineered features. FastAPI backend with service-wise cost breakdowns for EC2, S3, Lambda, DynamoDB, CloudWatch.',
-    stack: ['Python', 'XGBoost', 'FastAPI', 'Scikit-learn', 'Pandas', 'AWS'],
-    status: 'Complete',
+    description: 'XGBoost regression for AWS cost forecasting with 12 engineered features. FastAPI backend with service-wise breakdowns for EC2, S3, Lambda, DynamoDB.',
+    stack: ['Python', 'XGBoost', 'FastAPI', 'Scikit-learn', 'AWS'],
     link: null,
   },
   {
     name: 'MoBRec',
-    description:
-      'Mood-Based Music Recommendation system with Spotify API integration — detects mood from user input and surfaces personalised track recommendations.',
+    description: 'Mood-Based Music Recommendation with Spotify API integration — detects mood from user input and surfaces personalised track recommendations in real time.',
     stack: ['Python', 'Spotify API', 'ML', 'FastAPI'],
-    status: 'Complete',
     link: 'https://github.com/Mukunth1004/MoBRec',
   },
 ]
-
-const statusStyles = {
-  Active: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
-  Complete: 'text-white/40 bg-white/5 border-white/10',
-}
-
-function StatusBadge({ status }) {
-  return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${statusStyles[status] || statusStyles.Complete}`}>
-      {status}
-    </span>
-  )
-}
 
 export default function Projects() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="projects" className="py-32 px-6 bg-white/[0.01]">
+    <section id="projects" className="py-20 px-6" style={{ background: 'rgba(99,102,241,0.02)' }}>
       <div className="max-w-6xl mx-auto" ref={ref}>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          className="section-eyebrow"
-        >
+        <motion.p initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} className="section-eyebrow">
           Work
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.08 }}
+          transition={{ duration: 0.6, delay: 0.08 }}
           className="section-heading"
         >
           Projects
         </motion.h2>
 
         {/* Featured */}
-        <div className="space-y-5 mt-16">
+        <div className="space-y-5 mt-12">
           {featured.map((proj, i) => (
             <motion.div
               key={proj.name}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.18 + i * 0.14 }}
-              className="border-beam-card group"
+              transition={{ duration: 0.6, delay: 0.16 + i * 0.13 }}
+              className="card-premium overflow-hidden group"
             >
-              <div className="p-8 md:p-10">
+              {/* Gradient accent bar */}
+              <div
+                className="h-0.5 w-full"
+                style={{ background: `linear-gradient(90deg, var(--accent), var(--purple), transparent)` }}
+              />
+              <div className="p-7 md:p-9">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight group-hover:shimmer-text transition-all">{proj.name}</h3>
-                    <p className="text-sm text-white/35 mt-0.5">{proj.tagline}</p>
-                    <p className="text-xs text-white/20 mt-1">{proj.period}</p>
+                    <h3 className="text-lg font-bold text-white">{proj.name}</h3>
+                    <p className="text-sm mt-0.5" style={{ color: 'var(--accent-light)' }}>{proj.tagline}</p>
+                    <p className="text-xs mt-1" style={{ color: 'var(--text-subtle)' }}>{proj.period}</p>
                   </div>
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    <StatusBadge status={proj.status} />
-                    {proj.link && (
-                      <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white transition-colors">
-                        <FiGithub size={16} />
-                      </a>
-                    )}
-                  </div>
+                  {proj.link && (
+                    <a
+                      href={proj.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-xs px-3 py-1.5 rounded-full transition-all duration-200 flex-shrink-0"
+                      style={{
+                        color: 'var(--accent-light)',
+                        background: 'var(--accent-soft)',
+                        border: '1px solid var(--border-hover)',
+                      }}
+                    >
+                      <FiGithub size={13} /> View on GitHub
+                    </a>
+                  )}
                 </div>
 
-                <p className="text-sm text-white/45 leading-relaxed mb-7">{proj.description}</p>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-muted)' }}>
+                  {proj.description}
+                </p>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-7">
-                  {proj.metrics.map((m) => (
-                    <div key={m.label} className="rounded-xl bg-white/[0.03] border border-white/[0.06] py-3 px-4 text-center hover:border-white/12 transition-colors">
-                      <div className="text-sm font-semibold text-white/80">{m.value}</div>
-                      <div className="text-xs text-white/30 mt-0.5">{m.label}</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                  {proj.metrics.map(m => (
+                    <div
+                      key={m.label}
+                      className="rounded-xl py-3 px-4 text-center transition-all duration-200"
+                      style={{ background: 'var(--accent-soft)', border: '1px solid var(--border)' }}
+                    >
+                      <div
+                        className="text-sm font-bold"
+                        style={{
+                          background: 'linear-gradient(135deg, var(--accent-light), #fff)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                        }}
+                      >
+                        {m.value}
+                      </div>
+                      <div className="text-xs mt-0.5" style={{ color: 'var(--text-subtle)' }}>{m.label}</div>
                     </div>
                   ))}
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {proj.stack.map((tech) => (
-                    <span key={tech} className="badge">{tech}</span>
-                  ))}
+                  {proj.stack.map(tech => <span key={tech} className="badge">{tech}</span>)}
                 </div>
               </div>
             </motion.div>
@@ -151,42 +154,59 @@ export default function Projects() {
         </div>
 
         {/* Other projects */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.52 }}
-          className="text-xs tracking-[0.22em] uppercase text-white/20 mb-5 mt-14"
-        >
-          Other Projects
-        </motion.p>
-        <div className="grid md:grid-cols-3 gap-4">
-          {other.map((proj, i) => (
-            <motion.div
-              key={proj.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.56 + i * 0.09 }}
-              className="bento-card p-6 flex flex-col"
-            >
-              <div className="flex items-start justify-between mb-3">
-                <h4 className="text-sm font-semibold leading-snug pr-2">{proj.name}</h4>
-                <div className="flex items-center gap-2 flex-shrink-0">
-                  <StatusBadge status={proj.status} />
+        <div className="mt-12">
+          <p
+            className="text-xs tracking-[0.22em] uppercase mb-5 font-semibold"
+            style={{ color: 'var(--text-subtle)' }}
+          >
+            Other Projects
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            {other.map((proj, i) => (
+              <motion.div
+                key={proj.name}
+                initial={{ opacity: 0, y: 18 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.44 + i * 0.08 }}
+                className="bento-card p-5 flex flex-col"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <h4 className="text-sm font-bold text-white leading-snug pr-2">{proj.name}</h4>
                   {proj.link && (
-                    <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-white/25 hover:text-white transition-colors">
+                    <a
+                      href={proj.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors flex-shrink-0"
+                      style={{ color: 'var(--text-subtle)' }}
+                      onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-light)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-subtle)'; }}
+                    >
                       <FiExternalLink size={13} />
                     </a>
                   )}
                 </div>
-              </div>
-              <p className="text-xs text-white/35 leading-relaxed mb-4 flex-1">{proj.description}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {proj.stack.map((tech) => (
-                  <span key={tech} className="text-xs text-white/30 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.05]">{tech}</span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                <p className="text-xs leading-relaxed mb-4 flex-1" style={{ color: 'var(--text-muted)' }}>
+                  {proj.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {proj.stack.map(tech => (
+                    <span
+                      key={tech}
+                      className="text-xs px-2 py-0.5 rounded"
+                      style={{
+                        color: 'var(--text-subtle)',
+                        background: 'var(--accent-soft)',
+                        border: '1px solid var(--border)',
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
