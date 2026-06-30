@@ -4,28 +4,40 @@ import { useRef } from 'react'
 
 const groups = [
   {
-    category: 'Languages',
-    skills: ['Python', 'TypeScript', 'JavaScript', 'SQL'],
+    category: 'Programming Languages',
+    icon: '💻',
+    skills: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'Bash'],
+    span: 'col-span-1',
   },
   {
     category: 'Frameworks & Libraries',
-    skills: ['FastAPI', 'React.js', 'Next.js', 'Node.js', 'TailwindCSS', 'PyTorch', 'TensorFlow', 'Hugging Face Transformers', 'ONNX Runtime'],
+    icon: '⚙️',
+    skills: ['FastAPI', 'React.js', 'Next.js', 'Node.js', 'Remix', 'Redux', 'TensorFlow', 'Hugging Face Transformers', 'Jest'],
+    span: 'col-span-1 md:col-span-2',
   },
   {
     category: 'Databases',
+    icon: '🗄️',
     skills: ['PostgreSQL', 'MySQL', 'Redis', 'pgvector'],
+    span: 'col-span-1',
   },
   {
     category: 'Data & Machine Learning',
-    skills: ['XGBoost', 'Scikit-learn', 'Pandas', 'CUDA', 'AI/ML Integrations'],
+    icon: '🤖',
+    skills: ['Pandas', 'XGBoost', 'Scikit-learn', 'Matplotlib', 'NumPy'],
+    span: 'col-span-1',
   },
   {
     category: 'DevOps & Cloud',
-    skills: ['Docker', 'Kubernetes', 'Helm', 'GitLab CI/CD', 'GitHub Actions', 'AWS'],
+    icon: '☸️',
+    skills: ['Docker', 'Kubernetes', 'Helm Chart', 'GitLab CI/CD', 'GitHub Actions', 'AWS', 'Linux'],
+    span: 'col-span-1 md:col-span-2',
   },
   {
-    category: 'Tools',
-    skills: ['Git', 'Postman', 'Jira', 'Apache Superset'],
+    category: 'Tools & Platforms',
+    icon: '🛠️',
+    skills: ['Git', 'Jira', 'Apache Superset', 'Postman', 'Cursor', 'Claude'],
+    span: 'col-span-1',
   },
 ]
 
@@ -52,26 +64,35 @@ export default function Skills() {
           Technical Skills
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
+        {/* Magic UI bento grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
           {groups.map((group, i) => (
             <motion.div
               key={group.category}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 + i * 0.07 }}
-              className="card-premium p-6"
+              className={`bento-card p-6 ${group.span}`}
             >
-              <h3 className="text-xs font-semibold tracking-[0.2em] uppercase text-white/25 mb-5">
-                {group.category}
-              </h3>
+              <div className="flex items-center gap-2.5 mb-5">
+                <span className="text-lg">{group.icon}</span>
+                <h3 className="text-xs font-semibold tracking-[0.18em] uppercase text-white/35">
+                  {group.category}
+                </h3>
+              </div>
               <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
+                {group.skills.map((skill, j) => (
+                  <motion.span
                     key={skill}
-                    className="px-3 py-1 text-xs text-white/60 bg-white/[0.04] rounded-full border border-white/[0.07] hover:border-white/20 hover:text-white/90 transition-all duration-200 cursor-default"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 0.25 + i * 0.06 + j * 0.03 }}
+                    className="px-3 py-1.5 text-xs text-white/60 bg-white/[0.04] rounded-lg border border-white/[0.07]
+                               hover:border-white/20 hover:text-white/90 hover:bg-white/[0.07]
+                               transition-all duration-200 cursor-default"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
