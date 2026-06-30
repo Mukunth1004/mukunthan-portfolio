@@ -5,10 +5,26 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi'
 
 const featured = [
   {
-    name: 'NeuralServe',
-    tagline: 'Transformer Inference & Optimization Platform',
+    name: 'AI Document Intelligence',
+    tagline: 'RAG-Powered Document Q&A Platform',
     description:
-      'Fine-tuned 66M-parameter DistilBERT on 67K SST-2 samples with PyTorch + CUDA mixed-precision training, achieving 92%+ validation accuracy in 3 epochs. Exported to ONNX with graph optimizations (attention fusion, constant folding, memory scheduling), cutting inference latency 40% faster than PyTorch baseline. Implemented 32-sample dynamic batching with Rust-backed HuggingFace tokenizers and ONNX Runtime, boosting throughput 4x over sequential inference. Built 6-endpoint FastAPI inference server with PostgreSQL logging and Docker deployment serving 1,000+ requests/minute.',
+      'Architected a full RAG platform (FastAPI, Next.js, PostgreSQL + pgvector) ingesting 4 document formats with 1024-token chunking and Hugging Face embeddings for semantic Q&A. Integrated Claude AI + Google Gemini API with streaming; reduced API calls 60% via Redis caching, achieving <500ms response time with cosine-similarity vector retrieval. Implemented JWT auth with 100 req/min rate limiting, persistent chat sessions, and multi-document Q&A; containerised with Docker and deployed on Vercel.',
+    metrics: [
+      { label: 'Response', value: '<500ms' },
+      { label: 'API Calls', value: '−60%' },
+      { label: 'Doc Formats', value: '4 types' },
+      { label: 'Auth', value: 'JWT + limits' },
+    ],
+    stack: ['Python', 'FastAPI', 'Next.js', 'PostgreSQL', 'pgvector', 'Hugging Face', 'Redis', 'Google Gemini API', 'Docker', 'Vercel'],
+    status: 'Active',
+    link: 'https://github.com/Mukunth1004/ai-document-intelligence',
+    period: 'May 2026 – Jun 2026',
+  },
+  {
+    name: 'NeuralServe',
+    tagline: 'Transformer Inference & Optimisation Platform',
+    description:
+      'Production-grade Transformer inference platform — fine-tuned 66M-parameter DistilBERT on 67K SST-2 samples with PyTorch + CUDA mixed-precision training (92%+ accuracy). Exported to ONNX with graph optimisations (attention fusion, constant folding) cutting latency 40%. Implemented 32-sample dynamic batching with ONNX Runtime boosting throughput 4x. Built 6-endpoint FastAPI server with PostgreSQL logging and Docker deployment serving 1,000+ RPM.',
     metrics: [
       { label: 'Accuracy', value: '92%+' },
       { label: 'Latency', value: '40% faster' },
@@ -17,24 +33,8 @@ const featured = [
     ],
     stack: ['PyTorch', 'ONNX Runtime', 'FastAPI', 'PostgreSQL', 'Docker', 'HuggingFace', 'CUDA', 'Next.js'],
     status: 'Active',
-    statusColor: 'blue',
     link: 'https://github.com/Mukunth1004/NeuralServe',
-  },
-  {
-    name: 'AI Document Intelligence Platform',
-    tagline: 'RAG-Powered Q&A for Multi-Format Documents',
-    description:
-      'End-to-end RAG SaaS platform using asynchronous programming with FastAPI REST APIs, PostgreSQL via SQLAlchemy ORM, pgvector, and Redis caching. Supports 4 document formats (PDF, DOCX, TXT, Markdown) handling 1,000+ concurrent requests per minute. Optimised semantic vector search with Hugging Face sentence-transformers achieving sub-500ms response times, reducing Gemini AI/ML integration calls by 60% and query latency by 40%. Event-driven architecture with tiktoken-based document chunking, PyJWT authentication, and Prometheus metrics.',
-    metrics: [
-      { label: 'Response', value: '<500ms' },
-      { label: 'API Calls', value: '−60%' },
-      { label: 'Formats', value: '4 types' },
-      { label: 'Auth', value: 'JWT + quotas' },
-    ],
-    stack: ['FastAPI', 'Next.js', 'PostgreSQL', 'pgvector', 'Hugging Face', 'Redis', 'Google Gemini API', 'Vercel'],
-    status: 'Active',
-    statusColor: 'blue',
-    link: null,
+    period: 'Personal Project',
   },
 ]
 
@@ -42,33 +42,31 @@ const other = [
   {
     name: 'CloudDeployX',
     description:
-      'Production-grade FastAPI REST API containerized with Docker multi-stage builds and deployed on GCP Cloud Run. Zero-downtime GitHub Actions CI/CD pipeline using Workload Identity Federation (no static keys). Auto-scales 0→10 instances with Cloud Logging + Cloud Monitoring.',
-    stack: ['FastAPI', 'Python 3.12', 'Docker', 'GCP Cloud Run', 'GitHub Actions', 'Artifact Registry', 'Cloud Logging'],
+      'Production-grade FastAPI on GCP Cloud Run with Docker multi-stage builds and GitHub Actions CI/CD via Workload Identity Federation. Auto-scales 0→10 instances with Cloud Logging + Monitoring.',
+    stack: ['FastAPI', 'Docker', 'GCP Cloud Run', 'GitHub Actions', 'Cloud Logging'],
     status: 'Active',
     link: 'https://github.com/Mukunth1004/CloudDeployX',
   },
   {
     name: 'Cloud Cost Prediction (KONE)',
     description:
-      'XGBoost regression for AWS cost forecasting with engineered time-series features. FastAPI backend with service-wise breakdowns for EC2, S3, Lambda, DynamoDB.',
-    stack: ['Python', 'XGBoost', 'FastAPI', 'Scikit-learn', 'AWS'],
+      'XGBoost regression for AWS cost forecasting with 12 engineered features. FastAPI backend with service-wise cost breakdowns for EC2, S3, Lambda, DynamoDB, CloudWatch.',
+    stack: ['Python', 'XGBoost', 'FastAPI', 'Scikit-learn', 'Pandas', 'AWS'],
     status: 'Complete',
     link: null,
   },
   {
-    name: 'Faculty Information System',
+    name: 'MoBRec',
     description:
-      'Web-based ASP.NET system enabling faculty members to manage profiles, academic descriptions, and achievements. Role-based access control for faculty and administrative staff. Built with C# and .NET.',
-    stack: ['C#', '.NET', 'ASP.NET', 'SQL Server', 'MVC'],
+      'Mood-Based Music Recommendation system with Spotify API integration — detects mood from user input and surfaces personalised track recommendations.',
+    stack: ['Python', 'Spotify API', 'ML', 'FastAPI'],
     status: 'Complete',
-    link: 'https://github.com/Mukunth1004/Faculty-Information-System',
+    link: 'https://github.com/Mukunth1004/MoBRec',
   },
 ]
 
 const statusStyles = {
-  Production: 'text-green-400 bg-green-400/10 border-green-400/20',
   Active: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
-  Live: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
   Complete: 'text-white/40 bg-white/5 border-white/10',
 }
 
@@ -103,7 +101,7 @@ export default function Projects() {
           Projects
         </motion.h2>
 
-        {/* Featured projects */}
+        {/* Featured */}
         <div className="space-y-5 mt-16">
           {featured.map((proj, i) => (
             <motion.div
@@ -111,41 +109,42 @@ export default function Projects() {
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.18 + i * 0.14 }}
-              className="card-premium p-8 md:p-10"
+              className="border-beam-card group"
             >
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
-                <div>
-                  <h3 className="text-lg font-bold tracking-tight">{proj.name}</h3>
-                  <p className="text-sm text-white/35 mt-0.5">{proj.tagline}</p>
-                </div>
-                <div className="flex items-center gap-3 flex-shrink-0">
-                  <StatusBadge status={proj.status} />
-                  {proj.link && (
-                    <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white transition-colors">
-                      <FiGithub size={16} />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              <p className="text-sm text-white/45 leading-relaxed mb-7">{proj.description}</p>
-
-              {/* Metrics bar */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-7">
-                {proj.metrics.map((m) => (
-                  <div key={m.label} className="rounded-xl bg-white/[0.03] border border-white/[0.06] py-3 px-4 text-center">
-                    <div className="text-sm font-semibold text-white/80">{m.value}</div>
-                    <div className="text-xs text-white/30 mt-0.5">{m.label}</div>
+              <div className="p-8 md:p-10">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight group-hover:shimmer-text transition-all">{proj.name}</h3>
+                    <p className="text-sm text-white/35 mt-0.5">{proj.tagline}</p>
+                    <p className="text-xs text-white/20 mt-1">{proj.period}</p>
                   </div>
-                ))}
-              </div>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <StatusBadge status={proj.status} />
+                    {proj.link && (
+                      <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white transition-colors">
+                        <FiGithub size={16} />
+                      </a>
+                    )}
+                  </div>
+                </div>
 
-              {/* Stack */}
-              <div className="flex flex-wrap gap-2">
-                {proj.stack.map((tech) => (
-                  <span key={tech} className="badge">{tech}</span>
-                ))}
+                <p className="text-sm text-white/45 leading-relaxed mb-7">{proj.description}</p>
+
+                {/* Metrics */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-7">
+                  {proj.metrics.map((m) => (
+                    <div key={m.label} className="rounded-xl bg-white/[0.03] border border-white/[0.06] py-3 px-4 text-center hover:border-white/12 transition-colors">
+                      <div className="text-sm font-semibold text-white/80">{m.value}</div>
+                      <div className="text-xs text-white/30 mt-0.5">{m.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {proj.stack.map((tech) => (
+                    <span key={tech} className="badge">{tech}</span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
@@ -167,7 +166,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.56 + i * 0.09 }}
-              className="card-premium p-6 flex flex-col"
+              className="bento-card p-6 flex flex-col"
             >
               <div className="flex items-start justify-between mb-3">
                 <h4 className="text-sm font-semibold leading-snug pr-2">{proj.name}</h4>
@@ -183,7 +182,7 @@ export default function Projects() {
               <p className="text-xs text-white/35 leading-relaxed mb-4 flex-1">{proj.description}</p>
               <div className="flex flex-wrap gap-1.5">
                 {proj.stack.map((tech) => (
-                  <span key={tech} className="text-xs text-white/30 bg-white/[0.04] px-2 py-0.5 rounded">{tech}</span>
+                  <span key={tech} className="text-xs text-white/30 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.05]">{tech}</span>
                 ))}
               </div>
             </motion.div>
