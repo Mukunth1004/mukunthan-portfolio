@@ -10,7 +10,7 @@ const experiences = [
     type: 'Full-time',
     period: 'Feb 2026 – Present',
     location: 'Bangalore, India',
-    project: 'MyBuildGuide — Construction Project Management SaaS',
+    project: 'MyBuildGuide — Construction SaaS Platform',
     current: true,
     achievements: [
       'Deployed 7 microservices (Node.js, FastAPI, Flask) on Kubernetes (K3s) via Helm Chart across Dev, UAT, and Production — achieving 99.8% uptime.',
@@ -25,12 +25,12 @@ const experiences = [
     type: 'Full-time',
     period: 'Aug 2025 – Jan 2026',
     location: 'Chennai, India',
-    project: 'Phoenix — Shopify SaaS Checkout Builder',
+    project: 'Phoenix — Shopify Checkout Builder',
     current: false,
     achievements: [
       'Migrated Shopify SaaS checkout from CSR to SSR using ReactJS and Remix, boosting PageSpeed Performance from 45 to 86+ and cutting initial load times significantly.',
-      'Raised Accessibility from 86 to 100 and SEO from 98 to 100 through HTML5/CSS3 responsive UI optimisation — achieving perfect Lighthouse scores across both metrics.',
-      'Built reusable React.js + Redux components in TypeScript with Jest testing and agile standards — cutting per-client implementation effort across checkout flows.',
+      'Raised Accessibility from 86 to 100 and SEO from 98 to 100 through HTML5/CSS3 responsive UI optimisation — achieving perfect Lighthouse scores.',
+      'Built reusable React.js + Redux components in TypeScript with Jest testing — cutting per-client implementation effort across checkout flows.',
     ],
     stack: ['TypeScript', 'React.js', 'Remix', 'Redux', 'Node.js', 'MySQL', 'Jest', 'GitHub Actions'],
   },
@@ -56,35 +56,34 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="experience" className="py-32 px-6 bg-white/[0.01]">
+    <section id="experience" className="py-20 px-6" style={{ background: 'rgba(99,102,241,0.02)' }}>
       <div className="max-w-4xl mx-auto" ref={ref}>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          className="section-eyebrow"
-        >
+        <motion.p initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} className="section-eyebrow">
           Career
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.08 }}
+          transition={{ duration: 0.6, delay: 0.08 }}
           className="section-heading"
         >
           Experience
         </motion.h2>
 
-        <div className="relative mt-16">
+        <div className="relative mt-12">
           {/* Timeline rail */}
-          <div className="absolute left-[7px] top-3 bottom-8 w-px bg-gradient-to-b from-white/20 via-white/08 to-transparent hidden md:block" />
+          <div
+            className="absolute left-[7px] top-3 bottom-8 w-px hidden md:block"
+            style={{ background: 'linear-gradient(to bottom, var(--accent), rgba(99,102,241,0.1), transparent)' }}
+          />
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {experiences.map((exp, i) => (
               <motion.div
                 key={exp.company}
                 initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.18 + i * 0.15 }}
+                transition={{ duration: 0.6, delay: 0.16 + i * 0.14 }}
                 className="md:pl-10 relative"
               >
                 {/* Timeline dot */}
@@ -93,58 +92,60 @@ export default function Experience() {
                     exp.current ? 'timeline-dot-active' : 'timeline-dot'
                   }`}
                 >
-                  {exp.current && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
+                  {exp.current && <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--bg)' }} />}
                 </div>
 
-                <div className="border-beam-card overflow-hidden group">
-                  <div className="p-8">
+                <div className="card-premium overflow-hidden group">
+                  {/* Top accent line */}
+                  {exp.current && (
+                    <div
+                      className="h-0.5 w-full"
+                      style={{ background: 'linear-gradient(90deg, var(--accent), var(--purple), transparent)' }}
+                    />
+                  )}
+                  <div className="p-7">
                     {/* Header */}
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
                       <div>
-                        <h3 className="text-base font-semibold text-white leading-snug">{exp.title}</h3>
-                        <p className="text-sm text-white/45 mt-0.5">{exp.company}</p>
+                        <h3 className="text-base font-bold text-white leading-snug">{exp.title}</h3>
+                        <p className="text-sm mt-0.5 font-medium" style={{ color: 'var(--accent-light)' }}>
+                          {exp.company}
+                        </p>
                       </div>
                       <div className="flex items-center gap-2 flex-shrink-0">
-                        {exp.current && (
-                          <span className="badge-accent animate-pulse-glow">Current</span>
-                        )}
-                        <span className="text-xs text-white/25 border border-white/10 rounded-full px-2.5 py-0.5">
+                        {exp.current && <span className="badge-accent animate-pulse-accent">Current</span>}
+                        <span
+                          className="text-xs border rounded-full px-2.5 py-0.5"
+                          style={{ color: 'var(--text-subtle)', borderColor: 'var(--border)' }}
+                        >
                           {exp.type}
                         </span>
                       </div>
                     </div>
 
                     {/* Meta */}
-                    <div className="flex flex-wrap gap-4 text-xs text-white/30 mb-4">
-                      <span className="flex items-center gap-1.5">
-                        <FiCalendar size={10} />
-                        {exp.period}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <FiMapPin size={10} />
-                        {exp.location}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <FiBriefcase size={10} />
-                        {exp.project}
-                      </span>
+                    <div className="flex flex-wrap gap-4 text-xs mb-4" style={{ color: 'var(--text-subtle)' }}>
+                      <span className="flex items-center gap-1.5"><FiCalendar size={10} />{exp.period}</span>
+                      <span className="flex items-center gap-1.5"><FiMapPin size={10} />{exp.location}</span>
+                      <span className="flex items-center gap-1.5"><FiBriefcase size={10} />{exp.project}</span>
                     </div>
 
                     {/* Achievements */}
-                    <ul className="space-y-2.5 mb-6">
+                    <ul className="space-y-2.5 mb-5">
                       {exp.achievements.map((a, j) => (
-                        <li key={j} className="flex gap-3 text-sm text-white/50 leading-relaxed">
-                          <span className="flex-shrink-0 mt-[9px] w-1 h-1 rounded-full bg-white/25" />
+                        <li key={j} className="flex gap-3 text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+                          <span
+                            className="flex-shrink-0 mt-[9px] w-1 h-1 rounded-full"
+                            style={{ background: 'var(--accent)' }}
+                          />
                           {a}
                         </li>
                       ))}
                     </ul>
 
-                    {/* Stack chips */}
+                    {/* Stack */}
                     <div className="flex flex-wrap gap-2">
-                      {exp.stack.map((tech) => (
-                        <span key={tech} className="badge">{tech}</span>
-                      ))}
+                      {exp.stack.map(tech => <span key={tech} className="badge">{tech}</span>)}
                     </div>
                   </div>
                 </div>
