@@ -5,19 +5,13 @@
 @tailwind utilities;
 
 @layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 64px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
   body {
     background-color: #000000;
     color: #ffffff;
@@ -25,100 +19,167 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
   }
-
-  /* Thin, tasteful scrollbar */
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 2px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  ::selection {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-  }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+  ::selection { background: rgba(255,255,255,0.12); color: #fff; }
 }
 
 @layer components {
   /* ── Buttons ── */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-7 py-2.5 text-sm font-semibold bg-white text-black rounded-full;
+    @apply inline-flex items-center justify-center px-7 py-2.5 text-sm font-semibold bg-white text-black rounded-full relative overflow-hidden;
     transition: all 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .btn-primary:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.12);
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
   }
+  .btn-primary:hover::before { left: 120%; }
+  .btn-primary:hover { background: rgba(255,255,255,0.92); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(255,255,255,0.15); }
   .btn-primary:active { transform: scale(0.98); }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-7 py-2.5 text-sm font-medium rounded-full;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.6);
     transition: all 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .btn-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-1px);
-  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.9); transform: translateY(-1px); }
   .btn-secondary:active { transform: scale(0.98); }
 
-  /* ── Cards ── */
+  /* ── Cards – base ── */
   .card-premium {
-    background: rgba(255, 255, 255, 0.028);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255,255,255,0.028);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: 16px;
-    transition: background 0.3s ease, border-color 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
   }
   .card-premium:hover {
-    background: rgba(255, 255, 255, 0.045);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255,255,255,0.045);
+    border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 8px 40px rgba(0,0,0,0.4);
+  }
+
+  /* ── Bento card (Magic UI style) ── */
+  .bento-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.04), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .bento-card:hover { border-color: rgba(255,255,255,0.14); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+  .bento-card:hover::before { opacity: 1; }
+
+  /* ── Glow card (stat cards) ── */
+  .glow-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .glow-card:hover {
+    border-color: rgba(255,255,255,0.18);
+    box-shadow: 0 0 30px rgba(255,255,255,0.04), 0 0 60px rgba(255,255,255,0.02);
+  }
+
+  /* ── Border beam card (Aceternity) ── */
+  .border-beam-card {
+    background: rgba(255,255,255,0.025);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .border-beam-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03), rgba(255,255,255,0.15));
+    background-size: 200% 200%;
+    animation: border-beam 4s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+
+  /* ── Shimmer text (Magic UI) ── */
+  .shimmer-text {
+    background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.6) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-slide 3s linear infinite;
+  }
+
+  /* ── Animated grid bg ── */
+  .animated-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 
   /* ── Badges ── */
   .badge {
     @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium;
-    color: rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 6px;
+    transition: all 0.2s ease;
   }
+  .badge:hover { border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.75); }
 
   .badge-accent {
     @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 999px;
   }
 
   /* ── Section typography ── */
   .section-eyebrow {
     @apply text-xs tracking-[0.3em] uppercase text-center mb-3;
-    color: rgba(255, 255, 255, 0.28);
+    color: rgba(255,255,255,0.28);
     font-weight: 500;
   }
-
   .section-heading {
     @apply text-[clamp(2rem,5vw,3.2rem)] font-bold text-center tracking-tight;
-    color: rgba(255, 255, 255, 0.95);
+    color: rgba(255,255,255,0.95);
   }
 
-  /* ── Legacy classes kept for compatibility ── */
+  /* ── Gradient text ── */
   .gradient-text {
     background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%);
     -webkit-background-clip: text;
@@ -126,9 +187,45 @@
     background-clip: text;
   }
 
-  .glass-effect {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  /* ── Experience timeline ── */
+  .timeline-dot-active {
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
   }
+  .timeline-dot {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+}
+
+@layer utilities {
+  @keyframes border-beam {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes shimmer-slide {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.08); }
+    50% { box-shadow: 0 0 40px rgba(255,255,255,0.16); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+  .animate-float { animation: float 4s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+  .animate-spin-slow { animation: spin-slow 20s linear infinite; }
 }
